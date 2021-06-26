@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:littleshops/constants/ColorConstants.dart';
 import 'package:littleshops/configs/SizeConfig.dart';
+import 'package:littleshops/constants/ImageConstants.dart';
 
 class SplashScreen extends StatelessWidget {
-  const name({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +19,7 @@ class SplashScreen extends StatelessWidget {
               height: SizeConfig.defaultSize * 15,
             ),
             SizedBox(height: SizeConfig.defaultSize),
+          ] // Children
         )
       )
     );

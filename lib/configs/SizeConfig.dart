@@ -29,3 +29,4 @@ class SizeConfig {
   }
 
   SizeConfig._internal();
+}
