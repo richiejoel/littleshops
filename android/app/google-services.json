@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "604152725922",
+    "project_id": "littleshops-e51d8",
+    "storage_bucket": "littleshops-e51d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:604152725922:android:100d88b516d385804132fb",
+        "android_client_info": {
+          "package_name": "com.thesis.littleshops"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "604152725922-d7rb8av5mqvu2c1a44crhdkoroagnc3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVFXZQm8dXQYZ1eWuji9z1_T24BeTMJ7U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "604152725922-d7rb8av5mqvu2c1a44crhdkoroagnc3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
