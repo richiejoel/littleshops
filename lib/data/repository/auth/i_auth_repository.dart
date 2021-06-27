@@ -1,4 +1,4 @@
-import 'package:littleshops/data/model/UserModel.dart';
+import 'package:littleshops/data/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class IAuthRepository {

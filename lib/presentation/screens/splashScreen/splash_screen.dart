@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:littleshops/constants/ColorConstants.dart';
-import 'package:littleshops/configs/SizeConfig.dart';
-import 'package:littleshops/constants/ImageConstants.dart';
+import 'package:littleshops/constants/color_constants.dart';
+import 'package:littleshops/configs/size_config.dart';
+import 'package:littleshops/constants/image_constants.dart';
 
 class SplashScreen extends StatelessWidget {
   @override

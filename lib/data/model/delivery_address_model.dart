@@ -1,4 +1,4 @@
-import 'package:littleshops/data/model/LocationModel.dart';
+import 'package:littleshops/data/model/location_model.dart';
 import 'package:equatable/equatable.dart';
 
 /// Delivery address model

@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
 
-import 'configs/SizeConfig.dart';
-import 'package:littleshops/presentation/commonBlocs/CommonBloc.dart';
-import 'package:littleshops/AppView.dart';
+import 'configs/size_config.dart';
+import 'package:littleshops/presentation/commonBlocs/common_bloc.dart';
+import 'package:littleshops/app_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

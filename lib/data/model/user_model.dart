@@ -1,4 +1,4 @@
-import 'package:littleshops/data/model/DeliveryAddressModel.dart';
+import 'package:littleshops/data/model/delivery_address_model.dart';
 import 'package:equatable/equatable.dart';
 
 class UserModel extends Equatable {
