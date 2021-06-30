@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:littleshops/data/model/user_model.dart';
-import 'package:littleshops/data/repository/userRepository/i_user_repository.dart';
+import 'package:littleshops/data/repository/user_repository/i_user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class UserRepository implements IUserRepository {

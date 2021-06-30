@@ -10,6 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   #firebase
   firebase_core: ^1.0.0
   cloud_firestore: ^1.0.0
@@ -22,6 +24,10 @@ dependencies:
   provider: ^5.0.0-nullsafety.5
   #data
   equatable: ^2.0.0
+  rxdart: ^0.26.0
+  #Others
+  shared_preferences: ^2.0.4
+  uuid: ^3.0.3
   # Cupertino Icons font to your application.
   cupertino_icons: ^1.0.2
 
@@ -32,3 +38,27 @@ dev_dependencies:
 flutter:
   # Material Icons
   uses-material-design: true
+
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/locale/
+
+  # To add custom fonts to your application, add a fonts section here,
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
+          weight: 600
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Regular.otf
+          weight: 400
+        - asset: assets/fonts/poppins/Poppins-Medium.otf
+          weight: 500
+        - asset: assets/fonts/poppins/Poppins-SemiBold.otf
+          weight: 600

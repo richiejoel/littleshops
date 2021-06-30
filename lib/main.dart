@@ -3,15 +3,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:littleshops/presentation/common_blocs/simple_bloc_observer.dart';
 
 import 'configs/size_config.dart';
-import 'package:littleshops/presentation/commonBlocs/common_bloc.dart';
+import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
 import 'package:littleshops/app_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemUiOverlayStyle(statusBarColor: Colors.transparent);
-  //Bloc.observer = SimpleBlocObserver();
+  Bloc.observer = SimpleBlocObserver();
   await Firebase.initializeApp();
   runApp(MyApp());
 }

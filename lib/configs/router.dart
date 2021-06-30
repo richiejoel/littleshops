@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
 
+import 'package:littleshops/presentation/screens/splashScreen/splash_screen.dart';
+import 'package:littleshops/presentation/screens/login/login_screen.dart';
+import 'package:littleshops/bottom_navigation.dart';
+
 class AppRouter {
   static const String SPLASH = '/splash';
   static const String LOGIN = '/login';
   static const String INITIALIZE_INFO = '/initialize_info';
   static const String REGISTER = '/register';
+  static const String HOME = '/home';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case SPLASH:
         return MaterialPageRoute(
-          builder: (_) => Text("hola"),
+          builder: (_) => SplashScreen()
         );
       case LOGIN:
         return MaterialPageRoute(
-          builder: (_) => Text("hola"),
+          builder: (_) => LoginScreen(),
         );
       // case FORGOT_PASSWORD:
       //   return MaterialPageRoute(builder: (_) => ForgotPasswordScreen(),);
@@ -28,6 +33,10 @@ class AppRouter {
             builder: (_) =>
                 Text("hola") //RegisterScreen(initialUser: initialUser),
             );
+      case HOME:
+        return MaterialPageRoute(
+          builder: (_) => BottomNavigation(),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
