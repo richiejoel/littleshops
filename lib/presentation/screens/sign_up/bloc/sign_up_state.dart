@@ -3,6 +3,7 @@ import 'package:meta/meta.dart';
 @immutable
 class SignUpState {
   final bool isEmailValid;
+  final bool isNameValid;
   final bool isPasswordValid;
   final bool isConfirmPasswordValid;
   final bool isSubmitting;
@@ -15,6 +16,7 @@ class SignUpState {
 
   SignUpState(
       {required this.isEmailValid,
+        required this.isNameValid,
         required this.isPasswordValid,
         required this.isConfirmPasswordValid,
         required this.isSubmitting,
@@ -25,6 +27,7 @@ class SignUpState {
   factory SignUpState.empty() {
     return SignUpState(
       isEmailValid: true,
+      isNameValid: true,
       isPasswordValid: true,
       isConfirmPasswordValid: true,
       isSubmitting: false,
@@ -37,6 +40,7 @@ class SignUpState {
   factory SignUpState.loading() {
     return SignUpState(
       isEmailValid: true,
+      isNameValid: true,
       isPasswordValid: true,
       isConfirmPasswordValid: true,
       isSubmitting: true,
@@ -49,6 +53,7 @@ class SignUpState {
   factory SignUpState.failure(String message) {
     return SignUpState(
       isEmailValid: true,
+      isNameValid: true,
       isPasswordValid: true,
       isConfirmPasswordValid: true,
       isSuccess: false,
@@ -61,6 +66,7 @@ class SignUpState {
   factory SignUpState.success() {
     return SignUpState(
         isEmailValid: true,
+        isNameValid: true,
         isPasswordValid: true,
         isConfirmPasswordValid: true,
         isSubmitting: false,
@@ -75,6 +81,7 @@ class SignUpState {
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
       isConfirmPasswordValid: isConfirmPasswordValid,
+      isNameValid: true,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
@@ -96,6 +103,7 @@ class SignUpState {
     return SignUpState(
       isEmailValid: isEmailValid ?? this.isEmailValid,
       isPasswordValid: isPasswordValid ?? this.isPasswordValid,
+      isNameValid: isNameValid ?? this.isNameValid,
       isConfirmPasswordValid:
       isConfirmPasswordValid ?? this.isConfirmPasswordValid,
       isSubmitting: isSubmitting ?? this.isSubmitting,

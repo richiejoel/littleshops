@@ -14,6 +14,7 @@ import 'package:littleshops/presentation/screens/sign_up/bloc/sign_up_state.dart
 import 'package:littleshops/presentation/widgets/buttons/circle_button.dart';
 import 'package:littleshops/utils/dialog.dart';
 import 'package:littleshops/utils/translate.dart';
+import 'package:littleshops/utils/validators.dart';
 
 
 class SignUpForm extends StatefulWidget {
@@ -33,6 +34,7 @@ class _SignUpFormState extends State<SignUpForm>{
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   bool isShowPassword = false;
   bool isShowConfirmPassword = false;
@@ -48,13 +50,15 @@ class _SignUpFormState extends State<SignUpForm>{
     emailController.dispose();
     passwordController.dispose();
     confirmPasswordController.dispose();
+    nameController.dispose();
     super.dispose();
   }
 
   bool get isPopulated =>
       emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
-          confirmPasswordController.text.isNotEmpty;
+          confirmPasswordController.text.isNotEmpty &&
+          nameController.text.isNotEmpty;
 
   bool isRegisterButtonEnabled() {
     return signUpBloc.state.isFormValid &&
@@ -66,6 +70,7 @@ class _SignUpFormState extends State<SignUpForm>{
     if (isRegisterButtonEnabled()) {
       UserModel newUser = widget.intialUser!.cloneWith(
         email: emailController.text,
+        name: nameController.text
       );
       signUpBloc.add(
         Submitted(
@@ -112,6 +117,8 @@ class _SignUpFormState extends State<SignUpForm>{
                 children: <Widget>[
                   Text("Sign Up", style: FONT_CONST.SUBTITLE,),
                   SizedBox(height: SizeConfig.defaultSize * 3),
+                  _buildNameInput(),
+                  SizedBox(height: SizeConfig.defaultSize),
                   _buildEmailInput(),
                   SizedBox(height: SizeConfig.defaultSize),
                   _buildPasswordInput(),
@@ -128,6 +135,26 @@ class _SignUpFormState extends State<SignUpForm>{
             ),
           );
         },
+      ),
+    );
+  }
+
+  /// Build Name
+  _buildNameInput() {
+    return TextFormField(
+      controller: nameController,
+      onChanged: (value) {
+        signUpBloc.add(NameChanged(name: value));
+      },
+      keyboardType: TextInputType.text,
+      validator: (_) {
+        return !signUpBloc.state.isNameValid
+            ? Translate.of(context).translate('invalid_name')
+            : null;
+      },
+      decoration: InputDecoration(
+        hintText: Translate.of(context).translate('name'),
+        suffixIcon: Icon(Icons.person_outline),
       ),
     );
   }

@@ -8,6 +8,21 @@ abstract class SignUpEvent extends Equatable {
 
 }
 
+// Evento cambio de name
+class NameChanged extends SignUpEvent {
+  final String name;
+
+  const NameChanged({required this.name});
+
+  @override
+  List<Object> get props => [name];
+
+  @override
+  String toString() {
+    return 'NameChanged{email: $name}';
+  }
+}
+
 // Evento cambio de email
 class EmailChanged extends SignUpEvent {
   final String email;
