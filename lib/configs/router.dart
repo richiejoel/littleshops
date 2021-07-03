@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:littleshops/data/model/user_model.dart';
+import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
 
-import 'package:littleshops/presentation/screens/splashScreen/splash_screen.dart';
+import 'package:littleshops/presentation/screens/splash_screen/splash_screen.dart';
 import 'package:littleshops/presentation/screens/login/login_screen.dart';
 import 'package:littleshops/bottom_navigation.dart';
 
@@ -28,10 +30,9 @@ class AppRouter {
           builder: (_) => Text("hola"),
         );
       case REGISTER:
-        //var initialUser = settings.arguments as UserModel;
+        var initialUser = settings.arguments as UserModel;
         return MaterialPageRoute(
-            builder: (_) =>
-                Text("hola") //RegisterScreen(initialUser: initialUser),
+            builder: (_) => SignUpScreen(initialUser: initialUser),
             );
       case HOME:
         return MaterialPageRoute(
