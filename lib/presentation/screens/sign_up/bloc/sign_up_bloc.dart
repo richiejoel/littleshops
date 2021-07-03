@@ -63,10 +63,10 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     );
   }
 
-  /// Map from email changed event => states
+  /// Map from name changed event => states
   Stream<SignUpState> _mapNameChangedToState(String name) async* {
     yield state.update(
-      isEmailValid: UtilValidators.isValidName(name),
+      isNameValid: UtilValidators.isValidName(name),
     );
   }
 

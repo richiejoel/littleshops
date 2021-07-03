@@ -76,12 +76,12 @@ class SignUpState {
   }
 
   SignUpState update(
-      {bool? isEmailValid, bool? isPasswordValid, bool? isConfirmPasswordValid}) {
+      {bool? isEmailValid, bool? isPasswordValid, bool? isConfirmPasswordValid, bool? isNameValid}) {
     return cloneWith(
       isEmailValid: isEmailValid,
       isPasswordValid: isPasswordValid,
       isConfirmPasswordValid: isConfirmPasswordValid,
-      isNameValid: true,
+      isNameValid: isNameValid,
       isSubmitting: false,
       isSuccess: false,
       isFailure: false,
