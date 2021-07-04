@@ -16,3 +16,5 @@ class COLOR_CONST {
 
   COLOR_CONST._internal();
 }
+
+const mAnimationDuration = Duration(milliseconds: 200);

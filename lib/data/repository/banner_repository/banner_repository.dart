@@ -11,7 +11,7 @@ class BannerRepository implements IBannerRepository {
         .collection("banners")
         .get()
         .then((snapshot) => snapshot.docs
-        .map((doc) => BannerModel.fromMap(doc.data()!))
+        .map((doc) => BannerModel.fromMap(doc.data()))
         .toList())
         .catchError((err) {});
   }

@@ -8,6 +8,7 @@ class BannerModel extends Equatable {
 
   /// Json data from server turns into model data
   static BannerModel fromMap(Map<String, dynamic> data) {
+    print("Pruebita -> " + data["imageUrl"]);
     return BannerModel(
       id: data["id"] ?? "",
       imageUrl: data["imageUrl"] ?? "",
