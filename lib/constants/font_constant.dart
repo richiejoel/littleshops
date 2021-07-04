@@ -32,11 +32,39 @@ class FONT_CONST {
     fontSize: SizeConfig.defaultSize * 5,
   );
 
+  static final TITLE_APPBAR = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    fontSize: SizeConfig.defaultSize * 3,
+  );
+
+  static final TITLE_DRAWER = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: Colors.white,
+    fontSize: SizeConfig.defaultSize * 2.2,
+  );
+
+  static final SUBTITLE_DRAWER = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.normal,
+    color: Colors.white,
+    fontSize: SizeConfig.defaultSize * 1.5,
+  );
+
   static final SUBTITLE = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,
     color: COLOR_CONST.primaryColor,
     fontSize: SizeConfig.defaultSize * 3,
+  );
+
+  static final ITEM_MENU = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: COLOR_CONST.textColor,
+    fontSize: SizeConfig.defaultSize * 2,
   );
 
   //REGULAR

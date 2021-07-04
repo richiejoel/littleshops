@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:littleshops/data/model/user_model.dart';
+import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
+import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
 import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
 
 import 'package:littleshops/presentation/screens/splash_screen/splash_screen.dart';
@@ -12,6 +14,7 @@ class AppRouter {
   static const String INITIALIZE_INFO = '/initialize_info';
   static const String REGISTER = '/register';
   static const String HOME = '/home';
+  static const String FAVOURITE = '/favourite';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -37,6 +40,10 @@ class AppRouter {
       case HOME:
         return MaterialPageRoute(
           builder: (_) => BottomNavigation(),
+        );
+      case FAVOURITE:
+        return MaterialPageRoute(
+          builder: (_) => FavouriteScreen(),
         );
       default:
         return MaterialPageRoute(

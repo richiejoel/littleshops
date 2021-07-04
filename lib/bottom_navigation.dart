@@ -7,6 +7,8 @@ import 'package:littleshops/presentation/screens/home_page/home_screen.dart';
 import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
 import 'package:littleshops/presentation/screens/map_page/map_screen.dart';
 
+import 'navigation_drawer.dart';
+
 
 class BottomNavigation extends StatefulWidget {
   BottomNavigation({Key? key}) : super(key: key);
@@ -43,6 +45,11 @@ class _BottomNavigationState extends State<BottomNavigation>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Little Shops", style: FONT_CONST.TITLE_APPBAR,),
+        backgroundColor: COLOR_CONST.primaryColor,
+      ),
+      drawer: NavigationDrawer(),
       body: IndexedStack(
         children: [
           HomeScreen(),

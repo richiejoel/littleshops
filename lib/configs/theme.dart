@@ -17,12 +17,13 @@ class AppTheme {
   );
 
   static final _appBarTheme = AppBarTheme(
-    color: Colors.white,
+    //color: COLOR_CONST.primaryColor,
+    backgroundColor: COLOR_CONST.primaryColor,
     shadowColor: COLOR_CONST.cardShadowColor,
     elevation: 0.4,
     brightness: Brightness.light,
-    iconTheme: IconThemeData(color: COLOR_CONST.textColor),
-    actionsIconTheme: IconThemeData(color: COLOR_CONST.textColor),
+    iconTheme: IconThemeData(color: COLOR_CONST.whiteColor),
+    actionsIconTheme: IconThemeData(color: COLOR_CONST.primaryHoverColor),
     centerTitle: true,
     textTheme: TextTheme(headline6: FONT_CONST.BOLD_DEFAULT_20),
   );
