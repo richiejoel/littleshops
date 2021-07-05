@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/presentation/screens/home_page/widgets/home_body.dart';
 
 import 'package:littleshops/presentation/screens/home_page/bloc/home_bloc.dart';
@@ -16,6 +17,7 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             body: SafeArea(
               child: RefreshIndicator(
+                color: COLOR_CONST.primaryColor,
                 onRefresh: () async {
                   BlocProvider.of<HomeBloc>(context).add(RefreshHome());
                 },

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:littleshops/data/model/banner_model.dart';
 
 abstract class IBannerRepository {

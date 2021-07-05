@@ -7,11 +7,12 @@ class BannerModel extends Equatable {
   BannerModel({required this.id, required this.imageUrl});
 
   /// Json data from server turns into model data
-  static BannerModel fromMap(Map<String, dynamic> data) {
-    print("Pruebita -> " + data["imageUrl"]);
+  static BannerModel fromMap(Map<String, dynamic> data ) {
+    //print("Pruebita -> " + (data ?? const{})["imageUrl"] ?? "");
+
     return BannerModel(
-      id: data["id"] ?? "",
-      imageUrl: data["imageUrl"] ?? "",
+      id: (data ?? const{}) ["id"] ?? "" ,
+      imageUrl: (data ?? const{})["imageUrl"] ?? "",
     );
   }
 
