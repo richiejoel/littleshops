@@ -1,12 +1,16 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 import 'package:littleshops/data/model/banner_model.dart';
 import 'banner_repository_abstract.dart';
 
 /// Cart is collection in each user
 class BannerRepository implements IBannerRepository {
+
+  final refStorage = FirebaseStorage.instance.ref().child('banners');
+
   @override
   Future<List<BannerModel>> fetchBanners() async {
     return await FirebaseFirestore.instance

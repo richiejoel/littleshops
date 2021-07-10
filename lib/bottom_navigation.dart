@@ -48,6 +48,7 @@ class _BottomNavigationState extends State<BottomNavigation>
       appBar: AppBar(
         title: Text("Little Shops", style: FONT_CONST.TITLE_APPBAR,),
         backgroundColor: COLOR_CONST.primaryColor,
+
       ),
       drawer: NavigationDrawer(),
       body: IndexedStack(

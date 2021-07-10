@@ -31,6 +31,7 @@ dependencies:
   #Others
   shared_preferences: ^2.0.4
   uuid: ^3.0.3
+  flutter_svg: ^0.21.0-nullsafety.0 # Help us to use svg in our app
   # Cupertino Icons font to your application.
   cupertino_icons: ^1.0.2
 

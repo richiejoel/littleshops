@@ -1,12 +1,15 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:littleshops/data/model/banner_model.dart';
+import 'package:littleshops/data/model/category_model.dart';
+import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/repository/banner_repository/banner_repository.dart';
+import 'package:littleshops/data/repository/product_repository/product_repository.dart';
 
 import 'package:littleshops/presentation/screens/home_page/bloc/bloc.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final BannerRepository _bannerRepository = BannerRepository();
-  //final ProductRepository _productRepository = AppRepository.productRepository;
+  final ProductRepository _productRepository = ProductRepository();
 
   HomeBloc() : super(HomeLoading());
 
@@ -24,10 +27,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       HomeResponse homeResponse = HomeResponse(
         banners: await _bannerRepository.fetchBanners(),
-        //banners: models,
-        //categories: await _productRepository.getCategories(),
-        //popularProducts: await _productRepository.fetchPopularProducts(),
-        //discountProducts: await _productRepository.fetchDiscountProducts(),
+        categories: await _productRepository.getCategories(),
+        popularProducts: await _productRepository.fetchPopularProducts(),
+        discountProducts: await _productRepository.fetchDiscountProducts(),
+        //banners: models
       );
       yield HomeLoaded(homeResponse: homeResponse);
     } catch (e) {
@@ -38,14 +41,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
 class HomeResponse {
   final List<BannerModel> banners;
-  //final List<CategoryModel> categories;
-  //final List<Product> popularProducts;
-  //final List<Product> discountProducts;
+  final List<CategoryModel> categories;
+  final List<Product> popularProducts;
+  final List<Product> discountProducts;
 
   HomeResponse({
     required this.banners,
-    //required this.popularProducts,
-    //required this.categories,
-    //required this.discountProducts,
+    required this.popularProducts,
+    required this.categories,
+    required this.discountProducts,
   });
 }

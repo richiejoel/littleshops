@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/configs/router.dart';
 
 import 'package:littleshops/configs/size_config.dart';
+import 'package:littleshops/data/model/category_model.dart';
+import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/presentation/widgets/others/loading.dart';
+import 'package:littleshops/presentation/widgets/others/section_widget.dart';
+import 'package:littleshops/presentation/widgets/single_card/category_card.dart';
+import 'package:littleshops/presentation/widgets/single_card/product_card.dart';
 import 'package:littleshops/utils/translate.dart';
 import 'package:littleshops/presentation/screens/home_page/bloc/home_bloc.dart';
 import 'package:littleshops/presentation/screens/home_page/bloc/home_state.dart';
 import 'package:littleshops/presentation/screens/home_page/widgets/home_banner.dart';
 
-
+//#3084ee color notificarion
 class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,19 +27,19 @@ class HomeBody extends StatelessWidget {
               child: Column(
                 children: [
                   HomeBanner(banners: homeResponse.banners),
-                  /*_buildHomeCategories(
+                  _buildHomeCategories(
                     context,
                     homeResponse.categories,
-                  ),*/
+                  ),
                   //PromoWidget(),
-                  /*_buildPopularProducts(
+                  _buildPopularProducts(
                     context,
                     homeResponse.popularProducts,
                   ),
                   _buildDiscountProducts(
                     context,
                     homeResponse.discountProducts,
-                  ),*/
+                  ),
                 ],
               ),
             );
@@ -50,7 +56,7 @@ class HomeBody extends StatelessWidget {
     );
   }
 
-  /*_buildPopularProducts(BuildContext context, List<Product> popularProducts) {
+  _buildPopularProducts(BuildContext context, List<Product> popularProducts) {
     return SectionWidget(
       title: Translate.of(context).translate('popular_products'),
       children: popularProducts.map((p) => ProductCard(product: p)).toList(),
@@ -76,12 +82,12 @@ class HomeBody extends StatelessWidget {
           childAspectRatio: 931 / 485,
         ),
         itemBuilder: (context, index) {
-          return CategoryModelCard(
+          return CategoryCard(
             category: categories[index],
             onPressed: () {
               Navigator.pushNamed(
                 context,
-                AppRouter.CATEGORIES,
+                AppRouter.FAVOURITE,
                 arguments: categories[index],
               );
             },
@@ -91,5 +97,5 @@ class HomeBody extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
       ),
     );
-  }*/
+  }
 }
