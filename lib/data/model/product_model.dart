@@ -21,13 +21,13 @@ class Product {
   final int quantity, soldQuantity;
 
   /// Original price and percent-off sale
-  final int originalPrice, percentOff;
+  final double originalPrice, percentOff;
 
   /// Is available
   final bool isAvailable;
 
   /// Get current price
-  int get price => (this.originalPrice * (100 - this.percentOff) / 100).ceil();
+  double get price => (this.originalPrice * (100 - this.percentOff) / 100);
 
   /// Constructor
   Product({
@@ -54,10 +54,10 @@ class Product {
       categoryId: data["categoryId"] ?? "",
       quantity: data["quantity"] ?? 0,
       soldQuantity: data["soldQuantity"] ?? 0,
-      rating: data["rating"] ?? 0.0,
+      rating: data["rating"] ?? 0,
       isAvailable: data["isAvailable"] ?? true,
-      percentOff: data["percentOff"] ?? 0,
-      originalPrice: data["originalPrice"] ?? 0,
+      percentOff: data["percentOff"].toDouble() ?? 0.0 ,
+      originalPrice: data["originalPrice"].toDouble() ?? 0.0 ,
     );
   }
 

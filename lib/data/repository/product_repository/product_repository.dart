@@ -27,7 +27,7 @@ class ProductRepository implements IProductRepository{
         .limit(10)
         .get()
         .then((snapshot) => snapshot.docs
-        .map((doc) => Product.fromMap(doc.id, doc.data()!))
+        .map((doc) => Product.fromMap(doc.id, doc.data()))
         .toList())
         .catchError((error) {});
   }
@@ -92,5 +92,15 @@ class ProductRepository implements IProductRepository{
         .doc(id)
         .update({"rating": rating}).catchError((error) {});
   }
+
+  ///Singleton factory
+  static final ProductRepository _instance =
+  ProductRepository._internal();
+
+  factory ProductRepository() {
+    return _instance;
+  }
+
+  ProductRepository._internal();
 
 }

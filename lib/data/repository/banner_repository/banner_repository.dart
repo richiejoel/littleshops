@@ -9,7 +9,8 @@ import 'banner_repository_abstract.dart';
 /// Cart is collection in each user
 class BannerRepository implements IBannerRepository {
 
-  final refStorage = FirebaseStorage.instance.ref().child('banners');
+  final refStorage = FirebaseStorage.instance.ref();
+  String imagen = "";
 
   @override
   Future<List<BannerModel>> fetchBanners() async {
@@ -17,7 +18,7 @@ class BannerRepository implements IBannerRepository {
         .collection("banners")
         .get()
         .then((snapshot) => snapshot.docs
-            .map((doc) => BannerModel.fromMap((doc.data() ?? const {})))
+            .map((doc) => BannerModel.fromMap(doc.data()))
             .toList())
         .catchError((err) {});
   }

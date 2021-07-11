@@ -9,6 +9,7 @@ import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/presentation/widgets/others/custom_card_widget.dart';
 import 'package:littleshops/presentation/widgets/others/shimmer_image.dart';
 import 'package:littleshops/utils/translate.dart';
+import 'package:littleshops/utils/app_extension.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -66,7 +67,7 @@ class ProductCard extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${product.price}",
+          "${product.price.toPrice()}",
           style: FONT_CONST.BOLD_PRIMARY_18,
         ),
         Container(

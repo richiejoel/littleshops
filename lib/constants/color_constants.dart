@@ -8,7 +8,7 @@ class COLOR_CONST {
   static const backgroundColor = Color(0xffF6F7FB);
   static const whiteColor = Colors.white;
   static const borderColor = Color(0xFFd3d1d1);
-  static const discountColor = Color(0xFFF17322);
+  static const discountColor = Color(0xFF3084ee);
 
   static final COLOR_CONST _instance = COLOR_CONST._internal();
 

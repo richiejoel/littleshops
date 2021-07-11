@@ -39,6 +39,76 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 }
 
+List<Product> mListStatic(){
+  List<Product> models = [];
+  Product model = new Product(
+      id: "xdf4rffrrfr",
+      name: 'Martillo',
+      categoryId: 'cdcdcdd',
+      description: 'efrfrfrfr',
+      quantity: 40,
+      soldQuantity: 10,
+      originalPrice: 2,
+      percentOff: 2,
+      rating: 3.5,
+      isAvailable: true,
+      images: [
+        "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
+        "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+        "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+        'https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c',
+      ],
+  );
+
+  Product model1 = new Product(
+    id: "xdf4rffrrfr",
+    name: 'Martillo',
+    categoryId: 'cdcdcdd',
+    description: 'efrfrfrfr',
+    quantity: 40,
+    soldQuantity: 10,
+    originalPrice: 2,
+    percentOff: 2,
+    rating: 3.5,
+    isAvailable: true,
+    images: [
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+      'https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c',
+    ],
+  );
+
+  Product model2 = new Product(
+    id: "xdf4rffrrfr",
+    name: 'Martillo',
+    categoryId: 'cdcdcdd',
+    description: 'efrfrfrfr',
+    quantity: 40,
+    soldQuantity: 10,
+    originalPrice: 2,
+    percentOff: 2,
+    rating: 3.5,
+    isAvailable: true,
+    images: [
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+      "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
+      'https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c',
+    ],
+  );
+
+  models.add(model);
+  models.add(model1);
+  models.add(model2);
+
+
+  return models;
+
+
+
+}
+
 class HomeResponse {
   final List<BannerModel> banners;
   final List<CategoryModel> categories;
