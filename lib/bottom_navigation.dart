@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
+import 'package:littleshops/presentation/widgets/buttons/cart_button.dart';
 import 'package:littleshops/utils/translate.dart';
 import 'package:littleshops/presentation/screens/home_page/home_screen.dart';
 import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
@@ -48,7 +49,13 @@ class _BottomNavigationState extends State<BottomNavigation>
       appBar: AppBar(
         title: Text("Little Shops", style: FONT_CONST.TITLE_APPBAR,),
         backgroundColor: COLOR_CONST.primaryColor,
-
+        actions: [
+          CartButton(color: COLOR_CONST.whiteColor),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.message, color: Colors.white,),
+          ),
+      ],
       ),
       drawer: NavigationDrawer(),
       body: IndexedStack(

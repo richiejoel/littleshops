@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
+import 'package:littleshops/presentation/screens/detail_product/detail_product_screen.dart';
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
 import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
 import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
@@ -15,6 +17,8 @@ class AppRouter {
   static const String REGISTER = '/register';
   static const String HOME = '/home';
   static const String FAVOURITE = '/favourite';
+  static const String DETAIL_PRODUCT = '/detail_product';
+  static const String CART = '/cart';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -42,6 +46,15 @@ class AppRouter {
           builder: (_) => BottomNavigation(),
         );
       case FAVOURITE:
+        return MaterialPageRoute(
+          builder: (_) => FavouriteScreen(),
+        );
+      case DETAIL_PRODUCT:
+        var product = settings.arguments as Product;
+        return MaterialPageRoute(
+          builder: (_) => DetailProductScreen(product: product),
+        );
+      case CART:
         return MaterialPageRoute(
           builder: (_) => FavouriteScreen(),
         );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'package:littleshops/presentation/common_blocs/cart/bloc.dart';
 import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/application/bloc.dart';
 import 'package:littleshops/presentation/common_blocs/authentication/bloc.dart';
@@ -34,6 +35,12 @@ class _AppViewState extends State<AppView> {
     _navigator!.pushNamedAndRemoveUntil(route, (route) => false);
   }
 
+  void loadData() {
+    // Only load data when authenticated
+    //BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
+    BlocProvider.of<CartBloc>(context).add(LoadCart());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ApplicationBloc, ApplicationState>(
@@ -64,7 +71,7 @@ class _AppViewState extends State<AppView> {
                       } else if (authState is Uninitialized) {
                         onNavigate(AppRouter.SPLASH);
                       } else if (authState is Authenticated) {
-                        //loadData();
+                        loadData();
                         onNavigate(AppRouter.HOME);
                       }
                     } else {

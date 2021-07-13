@@ -24,7 +24,7 @@ class ProductCard extends StatelessWidget {
     return CustomCardWidget(
       onTap: () => Navigator.pushNamed(
         context,
-        AppRouter.FAVOURITE,
+        AppRouter.DETAIL_PRODUCT,
         arguments: product,
       ),
       width: SizeConfig.defaultSize * 18,
