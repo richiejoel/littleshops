@@ -28,7 +28,7 @@ class CartButton extends StatelessWidget {
                 icon: ICON_CONST.CART,
                 onPressed: () => Navigator.pushNamed(context, AppRouter.CART),
                 counter: state is CartLoaded ? state.cart.length : 0,
-                size: SizeConfig.defaultSize * 3.8,
+                size: SizeConfig.defaultSize * 3.0,
                 color: color,
               ),
             ),

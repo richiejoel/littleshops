@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
+import 'package:littleshops/presentation/screens/cart/cart_screen.dart';
 import 'package:littleshops/presentation/screens/detail_product/detail_product_screen.dart';
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
 import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
@@ -56,7 +57,7 @@ class AppRouter {
         );
       case CART:
         return MaterialPageRoute(
-          builder: (_) => FavouriteScreen(),
+          builder: (_) => CartScreen(),
         );
       default:
         return MaterialPageRoute(

@@ -9,11 +9,13 @@ class ICON_CONST {
   static const ADD_TO_CART = Icons.add_shopping_cart_rounded;
   static const LOG_OUT = "assets/icons/exit.svg";
   static const CAMERA = "assets/icons/Camera Icon.svg";
-  static const RECEIPT = "assets/icons/receipt.svg";
+  static const RECEIPTS = "assets/icons/receipt.svg";
   static const CANCEL = "assets/icons/cancel.svg";
   static const CHECK_MARK = "assets/icons/check_mark.svg";
   static const SUBTRACT = "assets/icons/subtract.svg";
   static const ADD = "assets/icons/add.svg";
   static const ADDRESS = "assets/icons/location.svg";
   static const ORDER = "assets/icons/order.svg";
+
+  static const RECEIPT = Icons.receipt_long;
 }
