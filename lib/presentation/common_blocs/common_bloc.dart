@@ -4,6 +4,7 @@ import 'package:littleshops/presentation/common_blocs/cart/cart_bloc.dart';
 
 import 'package:littleshops/presentation/common_blocs/language/language_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/authentication/authentication_bloc.dart';
+import 'package:littleshops/presentation/common_blocs/profile/profile_bloc.dart';
 
 class CommonBloc {
 
@@ -11,6 +12,7 @@ class CommonBloc {
   static final authenticationBloc = AuthenticationBloc();
   static final applicationBloc = ApplicationBloc();
   static final cartBloc = CartBloc();
+  static final profileBloc = ProfileBloc();
 
   static final List<BlocProvider> blocProviders = [
     BlocProvider<ApplicationBloc>(
@@ -25,6 +27,9 @@ class CommonBloc {
     BlocProvider<CartBloc>(
       create: (context) => cartBloc,
     ),
+    BlocProvider<ProfileBloc>(
+      create: (context) => profileBloc,
+    ),
 
   ];
 
@@ -33,6 +38,7 @@ class CommonBloc {
     authenticationBloc.close();
     applicationBloc.close();
     cartBloc.close();
+    profileBloc.close();
 
   }
 

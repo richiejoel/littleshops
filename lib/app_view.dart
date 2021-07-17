@@ -11,6 +11,8 @@ import 'package:littleshops/configs/application.dart';
 import 'package:littleshops/configs/theme.dart';
 import 'package:littleshops/configs/router.dart';
 import 'package:littleshops/configs/language.dart';
+import 'package:littleshops/presentation/common_blocs/profile/profile_bloc.dart';
+import 'package:littleshops/presentation/common_blocs/profile/profile_event.dart';
 import 'package:littleshops/utils/translate.dart';
 
 
@@ -37,7 +39,7 @@ class _AppViewState extends State<AppView> {
 
   void loadData() {
     // Only load data when authenticated
-    //BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
+    BlocProvider.of<ProfileBloc>(context).add(LoadProfile());
     BlocProvider.of<CartBloc>(context).add(LoadCart());
   }
 
