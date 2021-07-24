@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:littleshops/data/model/order_model.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/presentation/screens/cart/cart_screen.dart';
+import 'package:littleshops/presentation/screens/delivery_address/delivery_address_screen.dart';
+import 'package:littleshops/presentation/screens/detail_order/detail_order_screen.dart';
 import 'package:littleshops/presentation/screens/detail_product/detail_product_screen.dart';
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
 import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
@@ -20,6 +23,8 @@ class AppRouter {
   static const String FAVOURITE = '/favourite';
   static const String DETAIL_PRODUCT = '/detail_product';
   static const String CART = '/cart';
+  static const String DELIVERY_ADDRESS = '/deleviry_address';
+  static const String DETAIL_ORDER = '/detail_order';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -59,6 +64,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => CartScreen(),
         );
+      case DELIVERY_ADDRESS:
+        return MaterialPageRoute(
+          builder: (_) => DeliveryAddressModelScreen(),
+        );
+      case DETAIL_ORDER:
+        var order = settings.arguments as OrderModel;
+        return MaterialPageRoute(
+            builder: (_) => DetailOrderScreen(order: order));
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -70,6 +83,8 @@ class AppRouter {
     }
   }
 
+
+    //DELIVERY_ADDRESS
   ///Singleton factory
   static final AppRouter _instance = AppRouter._internal();
 

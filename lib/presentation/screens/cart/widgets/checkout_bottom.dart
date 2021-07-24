@@ -7,6 +7,7 @@ import 'package:littleshops/constants/font_constant.dart';
 import 'package:littleshops/constants/icon_constant.dart';
 import 'package:littleshops/presentation/common_blocs/cart/cart_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/cart/cart_state.dart';
+import 'package:littleshops/presentation/screens/cart/widgets/payment_bottom_sheet.dart';
 import 'package:littleshops/presentation/widgets/buttons/default_button.dart';
 import 'package:littleshops/utils/dialog.dart';
 import 'package:littleshops/utils/translate.dart';
@@ -61,7 +62,7 @@ class CheckoutBottom extends StatelessWidget {
       ),
       onPressed: () {
         if (state.cart.length > 0) {
-          //_openPaymentBottomSheet(context);
+          _openPaymentBottomSheet(context);
         } else {
           UtilDialog.showInformation(
             context,
@@ -106,7 +107,7 @@ class CheckoutBottom extends StatelessWidget {
     );
   }
 
-  /*_openPaymentBottomSheet(BuildContext context) {
+  _openPaymentBottomSheet(BuildContext context) {
     showModalBottomSheet(
       isScrollControlled: true,
       backgroundColor: Colors.white,
@@ -119,5 +120,5 @@ class CheckoutBottom extends StatelessWidget {
       context: context,
       builder: (BuildContext context) => PaymentBottomSheet(),
     );
-  }*/
+  }
 }

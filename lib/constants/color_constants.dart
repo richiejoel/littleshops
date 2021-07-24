@@ -9,6 +9,8 @@ class COLOR_CONST {
   static const whiteColor = Colors.white;
   static const borderColor = Color(0xFFd3d1d1);
   static const discountColor = Color(0xFF3084ee);
+  static const deleteButtonColor = Color(0xFFeb4d4b);
+  static const dividerColor = Colors.black12;
 
   static final COLOR_CONST _instance = COLOR_CONST._internal();
 
