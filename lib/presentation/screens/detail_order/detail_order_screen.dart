@@ -41,8 +41,12 @@ class DetailOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar:
-      AppBar(title: Text(Translate.of(context).translate("detail_order"))),
+      appBar: AppBar(
+          title: Text(
+            Translate.of(context).translate("detail_order"),
+            style: FONT_CONST.TITLE_DRAWER,
+          )
+      ),
       body: SafeArea(
         child: ListView(
           padding: EdgeInsets.only(bottom: SizeConfig.defaultPadding),

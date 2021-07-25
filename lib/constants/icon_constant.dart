@@ -8,7 +8,7 @@ class ICON_CONST {
   static const CART = "assets/icons/shopping_cart.svg";
   static const ADD_TO_CART = Icons.add_shopping_cart_rounded;
   static const LOG_OUT = "assets/icons/exit.svg";
-  static const CAMERA = "assets/icons/Camera Icon.svg";
+  static const CAMERA = "assets/icons/mask.svg";
   static const RECEIPTS = "assets/icons/receipt.svg";
   static const CANCEL = "assets/icons/cancel.svg";
   static const CHECK_MARK = "assets/icons/check_mark.svg";

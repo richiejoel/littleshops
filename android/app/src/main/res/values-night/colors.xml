@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Background all aplication -->
+    <color name="colorPrimary">#f92651</color>
+    <color name="colorPrimaryDark">#f92651</color>
+    <color name="colorBackground">#F6F7FB</color>
+    <color name="textColorHint">#C6F92651</color>
+</resources>

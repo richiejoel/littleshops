@@ -41,7 +41,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
           .map((c) => OrderModelItem.fromCartItemModel(c))
           .toList();
       priceOfGoods = cartState.priceOfGoods;
-      deliveryFee = 30000;
+      deliveryFee = 2.25;
 
       if (priceOfGoods >= 12000000) {
         coupon = 1000000;

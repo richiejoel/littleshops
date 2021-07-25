@@ -32,6 +32,8 @@ dependencies:
   shimmer: ^2.0.0-nullsafety.0
   #payment
   square_in_app_payments: ^1.6.0
+  #images
+  image_picker: ^0.7.2
   #Others
   stack_trace: ^1.10.0
   fluttertoast: ^8.0.3

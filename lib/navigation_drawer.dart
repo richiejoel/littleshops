@@ -37,15 +37,15 @@ class NavigationDrawer extends StatelessWidget {
             ),
             const SizedBox(height: 5,),
             mBuildMenuItem(
-                text: 'Workflow',
-                icon: Icons.workspaces_outline,
-                onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
+              text: 'My Orders',
+              icon: Icons.shopping_basket,
+              onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
             ),
             const SizedBox(height: 5,),
             mBuildMenuItem(
-                text: 'Updates',
-                icon: Icons.update,
-                onClicked: () => mSelectItem(context, UTIL_CONST.UPDATES),
+                text: 'Profile',
+                icon: Icons.person,
+                onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
             ),
             const SizedBox(height: 10,),
             Divider(color: COLOR_CONST.primaryColor,),
@@ -113,10 +113,13 @@ class NavigationDrawer extends StatelessWidget {
         Navigator.pushNamed(context, AppRouter.HOME);
         break;
       case UTIL_CONST.PROFILE:
-        Navigator.pushNamed(context, AppRouter.HOME);
+        Navigator.pushNamed(context, AppRouter.PROFILE);
         break;
       case UTIL_CONST.FAVOURITE:
         Navigator.pushNamed(context, AppRouter.FAVOURITE);
+        break;
+      case UTIL_CONST.MY_ORDERS:
+        Navigator.pushNamed(context, AppRouter.MY_ORDERS);
         break;
     }
   }

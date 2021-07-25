@@ -40,3 +40,48 @@ class ProfileUpdated extends ProfileEvent {
 
   List<Object> get props => [updatedUser];
 }
+
+// Evento cambio de name
+class NameChanged extends ProfileEvent {
+  final String name;
+
+  NameChanged({required this.name});
+
+  @override
+  List<Object> get props => [name];
+
+  @override
+  String toString() {
+    return 'NameChanged{name: $name}';
+  }
+}
+
+// Evento cambio de email
+class EmailChanged extends ProfileEvent {
+  final String email;
+
+  EmailChanged({required this.email});
+
+  @override
+  List<Object> get props => [email];
+
+  @override
+  String toString() {
+    return 'EmailChanged{email: $email}';
+  }
+}
+
+// Evento cambio de numero telefono
+class PhoneNumberChanged extends ProfileEvent {
+  final String phoneNumber;
+
+  PhoneNumberChanged({required this.phoneNumber});
+
+  @override
+  List<Object> get props => [phoneNumber];
+
+  @override
+  String toString() {
+    return 'PhoneNumberChanged{phoneNumber: $phoneNumber}';
+  }
+}
