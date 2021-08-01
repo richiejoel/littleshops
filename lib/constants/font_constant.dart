@@ -60,6 +60,13 @@ class FONT_CONST {
     fontSize: SizeConfig.defaultSize * 3,
   );
 
+  static final SUBTITLE_SCREEN = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: COLOR_CONST.primaryColor,
+    fontSize: SizeConfig.defaultSize * 2,
+  );
+
   static final ITEM_MENU = TextStyle(
     fontFamily: 'Poppins',
     fontWeight: FontWeight.bold,

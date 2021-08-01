@@ -16,47 +16,68 @@ class NavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Material(
-        color: COLOR_CONST.backgroundColor,
-        child: ListView(
-          padding: const EdgeInsets.all(0.0),
-          //padding: padding,
-          children: <Widget>[
-            mDrawerHeader(),
-            const SizedBox(height: 5,),
-            mBuildMenuItem(
-                text: 'Home',
-                icon: Icons.home,
-                onClicked: () => mSelectItem(context, UTIL_CONST.HOME),
-            ),
-            const SizedBox(height: 5,),
-            mBuildMenuItem(
-                text: 'Favourites',
-                icon: Icons.favorite_border,
-                onClicked: () => mSelectItem(context, UTIL_CONST.FAVOURITE),
-            ),
-            const SizedBox(height: 5,),
-            mBuildMenuItem(
-              text: 'My Orders',
-              icon: Icons.shopping_basket,
-              onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
-            ),
-            const SizedBox(height: 5,),
-            mBuildMenuItem(
-                text: 'Profile',
-                icon: Icons.person,
-                onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
-            ),
-            const SizedBox(height: 10,),
-            Divider(color: COLOR_CONST.primaryColor,),
-            const SizedBox(height: 10,),
-            mBuildMenuItem(
-                text: 'Log out',
-                icon: Icons.exit_to_app_rounded,
-              onClicked: () => mSignOut(context),
-            ),
-          ],
-        ),
+      child: BlocBuilder<ProfileBloc, ProfileState>(
+          builder: (context, state) {
+            if (state is ProfileLoaded) {
+              return Material(
+                color: COLOR_CONST.backgroundColor,
+                child: ListView(
+                  padding: const EdgeInsets.all(0.0),
+                  //padding: padding,
+                  children: <Widget>[
+                    mDrawerHeader(),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
+                      text: 'Home',
+                      icon: Icons.home,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.HOME),
+                    ),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
+                      text: 'Favourites',
+                      icon: Icons.favorite_border,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.FAVOURITE),
+                    ),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
+                      text: 'My Orders',
+                      icon: Icons.shopping_basket,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
+                    ),
+                    if(state.loggedUser.role == UTIL_CONST.CHIEF) ... [
+                      const SizedBox(height: 5,),
+                      mBuildMenuItem(
+                        text: 'Add Products',
+                        icon: Icons.add_business,
+                        onClicked: () => mSelectItem(context, UTIL_CONST.ADD_PRODUCTS),
+                      ),
+                      const SizedBox(height: 5,),
+                      mBuildMenuItem(
+                        text: 'Add Courier',
+                        icon: Icons.person_add,
+                        onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
+                      ),
+                    ],
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
+                      text: 'Profile',
+                      icon: Icons.person,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
+                    ),
+                    const SizedBox(height: 10,),
+                    Divider(color: COLOR_CONST.primaryColor,),
+                    const SizedBox(height: 10,),
+                    mBuildMenuItem(
+                      text: 'Log out',
+                      icon: Icons.exit_to_app_rounded,
+                      onClicked: () => mSignOut(context),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return Center(child: Text("Something went wrongs."));
+          },
       ),
     );
   }
@@ -120,6 +141,9 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case UTIL_CONST.MY_ORDERS:
         Navigator.pushNamed(context, AppRouter.MY_ORDERS);
+        break;
+      case UTIL_CONST.ADD_PRODUCTS:
+        Navigator.pushNamed(context, AppRouter.ADD_PRODUCTS);
         break;
     }
   }

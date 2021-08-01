@@ -85,12 +85,26 @@ class ProductRepository implements IProductRepository{
         .catchError((err) {});
   }
 
-
   @override
   Future<void> updateProductRatingById(String id, double rating) async {
     return await productCollection
         .doc(id)
         .update({"rating": rating}).catchError((error) {});
+  }
+
+  @override
+  Future<void> addProductByChief(Product newProduct) async {
+    var product = productCollection.doc();
+    await product
+        .set(newProduct.toMap(product.id))
+        .catchError((error) => print(error));
+  }
+
+  @override
+  Future<void> updateProductSoldQuantityById(String id, int soldQuantity) async {
+    return await productCollection
+        .doc(id)
+        .update({"soldQuantity": soldQuantity}).catchError((error) {});
   }
 
   ///Singleton factory

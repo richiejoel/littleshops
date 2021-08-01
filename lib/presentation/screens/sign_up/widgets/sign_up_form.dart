@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:littleshops/configs/size_config.dart';
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
+import 'package:littleshops/constants/util_constants.dart';
 
 import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/presentation/common_blocs/authentication/authentication_bloc.dart';
@@ -70,7 +71,8 @@ class _SignUpFormState extends State<SignUpForm>{
     if (isRegisterButtonEnabled()) {
       UserModel newUser = widget.intialUser!.cloneWith(
         email: emailController.text,
-        name: nameController.text
+        name: nameController.text,
+        role: UTIL_CONST.CUSTOMER,
       );
       signUpBloc.add(
         Submitted(

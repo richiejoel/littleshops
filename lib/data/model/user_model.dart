@@ -17,6 +17,9 @@ class UserModel extends Equatable {
   /// The user's phone number
   final String phoneNumber;
 
+  /// The role's user
+  final String role;
+
   final List<DeliveryAddressModel> addresses;
 
   /// Get default address
@@ -33,6 +36,7 @@ class UserModel extends Equatable {
     required this.name,
     required this.avatar,
     required this.phoneNumber,
+    required this.role,
     required this.addresses,
   });
 
@@ -50,6 +54,7 @@ class UserModel extends Equatable {
       email: data["email"] ?? "",
       avatar: data["avatar"] ?? "",
       phoneNumber: data["phoneNumber"] ?? "",
+      role: data["role"] ?? "",
       addresses: addresses,
     );
   }
@@ -62,6 +67,7 @@ class UserModel extends Equatable {
       "name": this.name,
       "avatar": this.avatar,
       "phoneNumber": this.phoneNumber,
+      "role": this.role,
       "addresses":
           List<dynamic>.from(this.addresses.map((item) => item.toMap()))
     };
@@ -75,6 +81,7 @@ class UserModel extends Equatable {
     phoneNumber,
     name,
     avatar,
+    role,
   }) {
     return UserModel(
       email: email ?? this.email,
@@ -82,16 +89,17 @@ class UserModel extends Equatable {
       name: name ?? this.name,
       avatar: avatar ?? this.avatar,
       phoneNumber: phoneNumber ?? this.phoneNumber,
+      role: role ?? this.role,
       addresses: addresses ?? this.addresses,
     );
   }
 
   @override
   String toString() {
-    return "UserModel:{email:${this.email},name:${this.name},phoneNumber:${this.phoneNumber},avatar:${this.avatar},addresses:${this.addresses}}";
+    return "UserModel:{email:${this.email},name:${this.name},phoneNumber:${this.phoneNumber},avatar:${this.avatar},role:${this.role},addresses:${this.addresses}}";
   }
 
   /// Compare two users
   @override
-  List<Object?> get props => [email, id, name, avatar, phoneNumber, addresses];
+  List<Object?> get props => [email, id, name, avatar, phoneNumber, role, addresses];
 }

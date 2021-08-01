@@ -90,4 +90,22 @@ class Product {
       originalPrice: originalPrice ?? this.originalPrice,
     );
   }
+
+  Map<String, dynamic> toMap(String newID) {
+    return {
+      "id": newID,
+      "categoryId": this.categoryId,
+      "name": this.name,
+      "description": this.description,
+      "rating": this.rating,
+      "quantity": this.quantity,
+      "soldQuantity": this.soldQuantity,
+      "originalPrice": this.originalPrice,
+      "percentOff": this.percentOff,
+      "isAvailable": this.isAvailable,
+      "images": this.images
+          //List<dynamic>.from(this.images.map((item) => item.toMap()))
+    };
+  }
+
 }

@@ -167,6 +167,11 @@
   "add_successfully": "Add successfully",
   "save": "Save",
   "district": "District",
-  "ward": "Ward"
+  "ward": "Ward",
+  "name_product": "Name Product",
+  "description_product": "Product Description",
+  "original_price": "Original Price",
+  "percent_off": "Percent Off",
+  "quantity_product": "Product Quantity"
 }
 
