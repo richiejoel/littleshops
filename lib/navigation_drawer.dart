@@ -60,6 +60,12 @@ class NavigationDrawer extends StatelessWidget {
                     ],
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
+                      text: 'To be Chief',
+                      icon: Icons.assignment_ind_outlined,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
+                    ),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
                       text: 'Profile',
                       icon: Icons.person,
                       onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),

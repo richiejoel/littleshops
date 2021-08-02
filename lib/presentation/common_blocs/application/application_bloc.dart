@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/application/bloc.dart';
@@ -20,6 +21,8 @@ class ApplicationBloc extends Bloc<ApplicationEvent, ApplicationState> {
     if (event is SetupApplication) {
       /// Setup SharedPreferences
       await application.setPreferences();
+      Position position = await application.determinePosition();
+      print("LOCATION -> " + position.latitude.toString() + " - " +position.longitude.toString());
 
       /// Get old settings
       final oldLanguage = LocalPref.getString("language");

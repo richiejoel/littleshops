@@ -59,28 +59,12 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
       List<File> images = [];
       List<dynamic> imagesUrl = [];
       String imageUrl = "";
-      /*String imageUrl = await _storageRepository.uploadImageFile(
-        "products/${Uuid().v1()}",
-        event.imageFiles.elementAt(0),
-      );*/
+
       for(int i=0; i<event.imageFiles.length; i++){
-        //if(event.imageFiles[i] == null){
-          //images.insert(i, event.imageFiles.elementAt(0));
-        //} else {
-          images.insert(i, event.imageFiles.elementAt(i));
-        //}
+        images.insert(i, event.imageFiles.elementAt(i));
       }
 
       Product? newProduct = event.product;
-
-      /*images.forEach((image) async {
-         String imageUrl = await _storageRepository.uploadImageFile(
-          "products/${Uuid().v1()}",
-          image,
-        );
-         imagesUrl.add(imageUrl);
-      });*/
-
       for(int i=0; i<images.length; i++) {
         imageUrl = await _storageRepository.uploadImageFile(
           "products/${Uuid().v1()}",
@@ -106,10 +90,6 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
 
       await _productRepository.addProductByChief(addProduct);
 
-      // Clone logged user with updated avatar
-      //var updatedUser = _loggedUser!.cloneWith(avatar: imageUrl);
-      // Update user's avatar
-     // await _userRepository.updateUserData(updatedUser);
     } catch (e) {
 
     }

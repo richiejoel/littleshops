@@ -34,6 +34,9 @@ dependencies:
   square_in_app_payments: ^1.6.0
   #images
   image_picker: ^0.7.2
+  #Maps
+  google_maps_flutter: ^2.0.6
+  geolocator: ^7.4.0
   #Others
   stack_trace: ^1.10.0
   fluttertoast: ^8.0.3
@@ -58,6 +61,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/locale/
+    - assets/maps/
 
   # To add custom fonts to your application, add a fonts section here,
   fonts:
