@@ -21,4 +21,9 @@ abstract class IUserRepository {
   /// [user] is updated data of user
   /// Created by NDH
   Future<void> updateUserData(UserModel updatedUser);
+
+  /// Update a doc in users collection
+  /// [user] is updated data of user one
+  /// Created by RGM
+  Future<void> updateOneDataUser(String uid, String key, String value);
 }

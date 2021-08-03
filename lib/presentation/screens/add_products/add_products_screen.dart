@@ -18,6 +18,7 @@ import 'package:littleshops/presentation/widgets/others/loading.dart';
 import 'package:littleshops/utils/dialog.dart';
 import 'package:littleshops/utils/translate.dart';
 
+import '../../../navigation_drawer.dart';
 import 'bloc/add_products_event.dart';
 import 'bloc/add_products_state.dart';
 
@@ -99,17 +100,18 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
               builder: (context, state) {
                 if(state is AddProductLoaded){
                   return Scaffold(
-                    appBar: AppBar(
-                      title: Text("Little Shops", style: FONT_CONST.TITLE_APPBAR,),
-                      backgroundColor: COLOR_CONST.primaryColor,
-                      actions: [
-                        CartButton(color: COLOR_CONST.whiteColor),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.message, color: Colors.white,),
-                        ),
-                      ],
-                    ),
+                      drawer: NavigationDrawer(),
+                      appBar: AppBar(
+                        title: Text("Little Shops", style: FONT_CONST.TITLE_APPBAR,),
+                        backgroundColor: COLOR_CONST.primaryColor,
+                        actions: [
+                          CartButton(color: COLOR_CONST.whiteColor),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.message, color: Colors.white,),
+                          ),
+                        ],
+                      ),
                     body: SafeArea(
                         child: Container(
                           color: COLOR_CONST.backgroundColor,

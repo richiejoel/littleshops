@@ -6,8 +6,10 @@ class UTIL_CONST {
   static const String FAVOURITE = "FAVOURITE";
   static const String MY_ORDERS = "MY_ORDERS";
   static const String ADD_PRODUCTS = "ADD_PRODUCTS";
+  static const String TO_BE_CHIEF = "TO_BE_CHIEF";
 
   /// ROLE
+  static const String ROLE = "role";
   static const String CHIEF = "CHIEF";
   static const String CUSTOMER = "CUSTOMER";
   static const String COURIER = "COURIER";

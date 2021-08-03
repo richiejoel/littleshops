@@ -62,7 +62,7 @@ class NavigationDrawer extends StatelessWidget {
                     mBuildMenuItem(
                       text: 'To be Chief',
                       icon: Icons.assignment_ind_outlined,
-                      onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
+                      onClicked: () => mSelectItem(context, UTIL_CONST.TO_BE_CHIEF),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
@@ -150,6 +150,9 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case UTIL_CONST.ADD_PRODUCTS:
         Navigator.pushNamed(context, AppRouter.ADD_PRODUCTS);
+        break;
+      case UTIL_CONST.TO_BE_CHIEF:
+        Navigator.pushNamed(context, AppRouter.TO_BE_CHIEF);
         break;
     }
   }

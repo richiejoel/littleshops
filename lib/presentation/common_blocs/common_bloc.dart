@@ -7,6 +7,8 @@ import 'package:littleshops/presentation/common_blocs/authentication/authenticat
 import 'package:littleshops/presentation/common_blocs/profile/profile_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/order/order_bloc.dart';
 
+import 'business/business_bloc.dart';
+
 class CommonBloc {
 
   static final languageBloc = LanguageBloc();
@@ -15,6 +17,7 @@ class CommonBloc {
   static final cartBloc = CartBloc();
   static final profileBloc = ProfileBloc();
   static final orderBloc = OrderBloc();
+  static final businessBloc = BusinessBloc();
 
   static final List<BlocProvider> blocProviders = [
     BlocProvider<ApplicationBloc>(
@@ -35,6 +38,9 @@ class CommonBloc {
     BlocProvider<OrderBloc>(
       create: (context) => orderBloc,
     ),
+    BlocProvider<BusinessBloc>(
+      create: (context) => businessBloc,
+    ),
 
   ];
 
@@ -45,7 +51,7 @@ class CommonBloc {
     cartBloc.close();
     profileBloc.close();
     orderBloc.close();
-
+    businessBloc.close();
   }
 
   //Singleton Factory

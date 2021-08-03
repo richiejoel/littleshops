@@ -52,6 +52,17 @@ class UserRepository implements IUserRepository {
     }).catchError((error) {});
   }
 
+  /// Update a doc in users collection
+  /// [user] is updated data of user one
+  Future<void> updateOneDataUser(String uid, String key, String value) async {
+    await _userCollection.doc(uid).get().then((doc) async {
+      if (doc.exists) {
+        // update
+        await doc.reference.update({key: value});
+      }
+    }).catchError((error) {});
+  }
+
   ///Singleton factory
   static final UserRepository _instance = UserRepository._internal();
 
