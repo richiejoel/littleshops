@@ -8,6 +8,7 @@ import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
 import 'package:littleshops/constants/icon_constant.dart';
 import 'package:littleshops/constants/image_constants.dart';
+import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/category_model.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/presentation/screens/add_products/bloc/add_products_bloc.dart';
@@ -36,6 +37,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   final TextEditingController quantityController = TextEditingController();
 
   CategoryModel? selectedCategory;
+  BusinessModel? selectedBusiness;
   List<File> imagesLocal = [];
   File? imageCurrent, imageCurrentTwo, imageCurrentThree, imageCurrentFour;
   Product? newProduct = Product(
@@ -43,14 +45,21 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
       rating: 2, isAvailable: true,
       quantity: 3, categoryId: "categoryId",
       name: "name", originalPrice: 30,
-      percentOff: 2, soldQuantity:
-      0, description: "description"
+      percentOff: 2, soldQuantity: 0,
+      description: "description", businessId: "",
+
   );
   UtilDialog? dialog;
 
   void onCategoryChanged(BuildContext context, CategoryModel category ){
     setState(() {
       selectedCategory =  category;
+    });
+  }
+
+  void onBusinessChanged(BuildContext context, BusinessModel business ){
+    setState(() {
+      selectedBusiness =  business;
     });
   }
 
@@ -138,6 +147,8 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                                   _buildQuantityProduct(context),
                                   SizedBox(height: SizeConfig.defaultSize),
                                   _buildCategoriesPicker(context, state.categories),
+                                  SizedBox(height: SizeConfig.defaultSize),
+                                  _buildBusinessPicker(context, state.business),
                                   SizedBox(height: SizeConfig.defaultSize),
                                   mProductsAdded(context),
                                   SizedBox(height: SizeConfig.defaultSize),
@@ -255,6 +266,17 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
     );
   }
 
+  _buildBusinessPicker(BuildContext context, List<BusinessModel> business) {
+    return DropdownButtonFormField<BusinessModel>(
+      decoration: InputDecoration(
+        labelText: Translate.of(context).translate("product_categories"),
+      ),
+      onChanged: (business) => onBusinessChanged(context, business!),
+      items: getDropdownItemsBusiness(business),
+      value: business.isEmpty ? null : selectedBusiness,
+    );
+  }
+
   _buildButtonAddProduct(BuildContext context) {
     return CircleButton(
       child: Icon(Icons.check, color: Colors.white),
@@ -279,6 +301,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
         rating: 0,
         soldQuantity: 0,
         isAvailable: true,
+        businessId: selectedBusiness!.id
       );
       BlocProvider.of<AddProductBloc>(context).add(AddNewProduct(imagesLocal, addProduct!));
       UtilDialog.hideWaiting(context);
@@ -287,6 +310,12 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   }
 
   getDropdownItems(List<CategoryModel> list) {
+    return list
+        .map((item) => DropdownMenuItem(child: Text(item.name), value: item))
+        .toList();
+  }
+
+  getDropdownItemsBusiness(List<BusinessModel> list) {
     return list
         .map((item) => DropdownMenuItem(child: Text(item.name), value: item))
         .toList();

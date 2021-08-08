@@ -52,6 +52,7 @@ List<Product> mListStatic(){
       percentOff: 2,
       rating: 3.5,
       isAvailable: true,
+      businessId: "",
       images: [
         "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
         "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
@@ -71,6 +72,7 @@ List<Product> mListStatic(){
     percentOff: 2,
     rating: 3.5,
     isAvailable: true,
+    businessId: "",
     images: [
       "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
       "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",
@@ -90,6 +92,7 @@ List<Product> mListStatic(){
     percentOff: 2,
     rating: 3.5,
     isAvailable: true,
+    businessId: "",
     images: [
       "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/banners%2Feletronics_products.png?alt=media&token=0b6c711b-45c0-4ee7-bb75-6b109807e4a4",
       "https://firebasestorage.googleapis.com/v0/b/littleshops-e51d8.appspot.com/o/products%2Fmartillo_1.png?alt=media&token=eea1bba3-bf79-46a6-a871-8b7d6bd76f2c",

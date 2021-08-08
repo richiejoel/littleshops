@@ -23,6 +23,9 @@ class Product {
   /// Original price and percent-off sale
   final double originalPrice, percentOff;
 
+  /// Business ID
+  final String businessId;
+
   /// Is available
   final bool isAvailable;
 
@@ -42,6 +45,7 @@ class Product {
     required this.percentOff,
     required this.soldQuantity,
     required this.description,
+    required this.businessId
   });
 
   /// Json data from server turns into model data
@@ -58,6 +62,7 @@ class Product {
       isAvailable: data["isAvailable"] ?? true,
       percentOff: data["percentOff"].toDouble() ?? 0.0 ,
       originalPrice: data["originalPrice"].toDouble() ?? 0.0 ,
+      businessId: data["businessId"] ?? "",
     );
   }
 
@@ -75,6 +80,7 @@ class Product {
     percentOff,
     originalPrice,
     price,
+    businessId,
   }) {
     return Product(
       id: id ?? this.id,
@@ -88,6 +94,7 @@ class Product {
       isAvailable: isAvailable ?? this.isAvailable,
       percentOff: percentOff ?? this.percentOff,
       originalPrice: originalPrice ?? this.originalPrice,
+      businessId: businessId ?? this.businessId,
     );
   }
 
@@ -103,7 +110,8 @@ class Product {
       "originalPrice": this.originalPrice,
       "percentOff": this.percentOff,
       "isAvailable": this.isAvailable,
-      "images": this.images
+      "images": this.images,
+      "businessId": this.businessId,
           //List<dynamic>.from(this.images.map((item) => item.toMap()))
     };
   }

@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/category_model.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/data/repository/auth/auth_repository.dart';
+import 'package:littleshops/data/repository/business_repository/business_repository.dart';
 import 'package:littleshops/data/repository/product_repository/product_repository.dart';
 import 'package:littleshops/data/repository/storage_repository/storage_repository.dart';
 import 'package:littleshops/data/repository/user_repository/user_repository.dart';
@@ -19,6 +21,7 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
   AuthRepository _authRepository = AuthRepository();
   StorageRepository _storageRepository = StorageRepository();
   UserRepository _userRepository = UserRepository();
+  BusinessRepository _businessRepository = BusinessRepository();
   UserModel? _loggedUser;
   Product? productCurrent = Product(
       id: "", images: [],
@@ -26,7 +29,9 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
       quantity: 3, categoryId: "categoryId",
       name: "name", originalPrice: 40,
       percentOff: 3, soldQuantity: 3,
-      description: "description");
+      description: "description",
+      businessId: "",
+  );
 
   AddProductBloc() : super(AddProductLoading());
 
@@ -43,9 +48,11 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
   Stream<AddProductState> _mapLoadProfileToState(AddProductEvent event) async* {
     try {
       List<CategoryModel> categories = await _productRepository.getCategories();
+      List<BusinessModel> business = await _businessRepository
+          .fetchBusinessByChief(_authRepository.loggedFirebaseUser.uid);
       UserModel userLogged = await _userRepository
           .getUserById(_authRepository.loggedFirebaseUser.uid);
-      yield AddProductLoaded(userLogged, categories);
+      yield AddProductLoaded(userLogged, categories, business);
 
     } catch (e) {
       yield AddProductLoadFailure(e.toString());
@@ -83,7 +90,8 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
           isAvailable: newProduct!.isAvailable,
           rating: newProduct!.rating,
           soldQuantity: newProduct!.soldQuantity,
-          images: imagesUrl
+          images: imagesUrl,
+          businessId: newProduct!.businessId
       );
 
       print(imagesUrl);
