@@ -111,7 +111,7 @@ class _ProductInfoWidgetState extends State<ProductInfoWidget> {
       onTap: () {
         Navigator.pushNamed(
           context,
-          AppRouter.FAVOURITE, //FEEDBACK
+          AppRouter.FEEDBACKS, //FEEDBACK
           arguments: product,
         );
       },
@@ -120,7 +120,7 @@ class _ProductInfoWidgetState extends State<ProductInfoWidget> {
           Text("${product.rating}", style: FONT_CONST.BOLD_DEFAULT_18),
           SizedBox(width: 5),
           SvgPicture.asset(
-            "assets/icons/Star Icon.svg",
+            "assets/icons/star_icon.svg",
             width: SizeConfig.defaultSize * 1.8,
             height: SizeConfig.defaultSize * 1.8,
           ),

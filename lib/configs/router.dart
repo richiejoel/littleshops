@@ -9,6 +9,7 @@ import 'package:littleshops/presentation/screens/delivery_address/delivery_addre
 import 'package:littleshops/presentation/screens/detail_order/detail_order_screen.dart';
 import 'package:littleshops/presentation/screens/detail_product/detail_product_screen.dart';
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
+import 'package:littleshops/presentation/screens/feedbacks/feebacks_screen.dart';
 import 'package:littleshops/presentation/screens/my_orders/my_orders_screen.dart';
 import 'package:littleshops/presentation/screens/profile/profile_screen.dart';
 import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
@@ -32,6 +33,7 @@ class AppRouter {
   static const String MY_ORDERS = '/my_orders';
   static const String ADD_PRODUCTS = '/add_products';
   static const String TO_BE_CHIEF = '/to_be_chief';
+  static const String FEEDBACKS = '/feedbacks';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -95,6 +97,11 @@ class AppRouter {
       case TO_BE_CHIEF:
         return MaterialPageRoute(
           builder: (_) => AddBusinessScreen(),
+        );
+      case FEEDBACKS:
+        var product = settings.arguments as Product;
+        return MaterialPageRoute(
+          builder: (_) => FeedbacksScreen(product: product),
         );
       default:
         return MaterialPageRoute(
