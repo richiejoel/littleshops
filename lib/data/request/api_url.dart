@@ -5,6 +5,7 @@ class DevEnvironment {
 
 class LocationApi {
   static const BASE_URL = "https://api.mysupership.vn/v1/partner/areas";
+  static const API_URL_PUSH = "https://little-shops-backend.herokuapp.com";
 }
 
 final environment = DevEnvironment();

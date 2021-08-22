@@ -15,4 +15,6 @@ abstract class IOrderRepository {
   /// [newOrderModel] is data of new order
   /// Created by NDH
   Future<void> removeOrderModel(OrderModel order);
+
+  Future<OrderModel> getOrderById(String pid);
 }

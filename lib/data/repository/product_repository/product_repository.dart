@@ -107,6 +107,15 @@ class ProductRepository implements IProductRepository{
         .update({"soldQuantity": soldQuantity}).catchError((error) {});
   }
 
+  @override
+  Future<String> fetchChiefByProductId(String? productId) async {
+    return await productCollection
+        .doc(productId)
+        .get()
+        .then((doc) => doc.data()!['businessId'])
+        .catchError((error) {});
+  }
+
   ///Singleton factory
   static final ProductRepository _instance =
   ProductRepository._internal();

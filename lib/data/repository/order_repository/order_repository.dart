@@ -27,6 +27,15 @@ class OrderRepository implements IOrderRepository {
     await orderCollection.doc(order.id).delete();
   }
 
+  @override
+  Future<OrderModel> getOrderById(String pid) async {
+    return await orderCollection
+        .doc(pid)
+        .get()
+        .then((doc) => OrderModel.fromMap(doc.data()!))
+        .catchError((error) {});
+  }
+
   ///Singleton factory
   static final OrderRepository _instance =
   OrderRepository._internal();

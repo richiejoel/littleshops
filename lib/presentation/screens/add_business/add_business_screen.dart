@@ -36,7 +36,8 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
     name: "",
     imageUrl: "",
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    couriers: []
   );
 
   @override

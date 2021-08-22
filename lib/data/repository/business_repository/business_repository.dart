@@ -34,6 +34,15 @@ class BusinessRepository implements IBusinessRepository{
         .catchError((error) {});
   }
 
+
+  Future<BusinessModel> fetchCouriersByBusinessID(String businessId) async {
+    return await businessCollection
+        .doc(businessId)
+        .get()
+        .then((doc) => BusinessModel.fromMap(doc.id, doc.data()!))
+        .catchError((error) {});
+  }
+
   ///Singleton factory
   static final BusinessRepository _instance =
   BusinessRepository._internal();

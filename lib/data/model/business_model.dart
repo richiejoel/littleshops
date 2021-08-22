@@ -8,6 +8,7 @@ class BusinessModel extends Equatable {
   final dynamic imageUrl;
   final double latitude;
   final double longitude;
+  final List<String> couriers;
 
   BusinessModel({
     required this.id,
@@ -16,7 +17,8 @@ class BusinessModel extends Equatable {
     required this.description,
     required this.imageUrl,
     required this.latitude,
-    required this.longitude
+    required this.longitude,
+    required this.couriers
   });
 
   
@@ -29,6 +31,7 @@ class BusinessModel extends Equatable {
         imageUrl: data["imageUrl"] ?? "",
         latitude: data["latitude"] ?? "",
         longitude: data["longitude"] ?? "",
+        couriers: data["couriers"] ?? ""
     );
   }
 
@@ -39,7 +42,8 @@ class BusinessModel extends Equatable {
     description,
     imageUrl,
     latitude,
-    longitude
+    longitude,
+    couriers
   }){
     return BusinessModel(
         id: id ?? this.id,
@@ -48,7 +52,8 @@ class BusinessModel extends Equatable {
         description: description ?? this.description,
         imageUrl: imageUrl ?? this.imageUrl,
         latitude: latitude ?? this.latitude,
-        longitude: longitude ?? this.longitude
+        longitude: longitude ?? this.longitude,
+        couriers: couriers ?? this.couriers
     );
   }
 
@@ -60,7 +65,8 @@ class BusinessModel extends Equatable {
       "description": this.description,
       "imageUrl": this.imageUrl,
       "latitude": this.latitude,
-      "longitude": this.longitude
+      "longitude": this.longitude,
+      "couriers": this.couriers
     };
   }
   

@@ -23,4 +23,6 @@ abstract class IProductRepository {
   ///Actualizar los productos vendidos
   Future<void> updateProductSoldQuantityById(String id, int soldQuantity);
 
+  Future<String> fetchChiefByProductId(String? productId);
+
 }
