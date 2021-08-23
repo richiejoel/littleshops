@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:littleshops/constants/util_constants.dart';
 import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/order_model.dart';
+import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/data/repository/auth/auth_repository.dart';
 import 'package:littleshops/data/repository/business_repository/business_repository.dart';
 import 'package:littleshops/data/repository/order_repository/order_repository.dart';
@@ -23,6 +25,7 @@ import 'package:littleshops/presentation/common_blocs/profile/profile_event.dart
 import 'package:littleshops/presentation/screens/detail_order/detail_order_screen.dart';
 import 'package:littleshops/utils/translate.dart';
 
+import 'data/repository/user_repository/user_repository.dart';
 import 'listener/notifications_messaging.dart';
 
 
@@ -41,6 +44,7 @@ class _AppViewState extends State<AppView> {
   BusinessRepository _businessRepository = BusinessRepository();
   AuthRepository _authRepository = AuthRepository();
   OrderRepository _orderRepository = OrderRepository();
+  UserRepository _userRepository = UserRepository();
   String orderId = "";
   OrderModel? orderModel;
   String? selectedNotificationPayload;
@@ -92,7 +96,9 @@ class _AppViewState extends State<AppView> {
     //ini rjgman
     messaging.getInitialMessage()
         .then((value) => print(value!.data.values.elementAt(0)));
-    messaging.getToken().then((value) => print("Messaging" + value!));
+    messaging.getToken().then((value){
+      _userRepository.updateOneDataUser(_authRepository.loggedFirebaseUser.uid, "token", value!);
+    });
     messaging.subscribeToTopic("Events");
     mConfigureCallBacks();
     //fin rjgman
@@ -101,6 +107,10 @@ class _AppViewState extends State<AppView> {
   // ini rjgman
   Future<bool> getCourierID(String businessId) async {
     final loggedFirebaseUser = _authRepository.loggedFirebaseUser;
+    UserModel user = await _userRepository.getUserById(loggedFirebaseUser.uid);
+    if(user.role != UTIL_CONST.COURIER){
+      return false;
+    }
     BusinessModel model = await _businessRepository.fetchCouriersByBusinessID(businessId);
     for(int i=0; i<model.couriers.length; i++){
       if(loggedFirebaseUser.uid == model.couriers.elementAt(i)){
@@ -134,6 +144,9 @@ class _AppViewState extends State<AppView> {
     FirebaseMessaging.instance.getInitialMessage()
         .then((RemoteMessage? message) {
       if (message == null) return;
+      /*if(!(getCourierID(message.data['info']) as bool)) {
+        messaging.unsubscribeFromTopic("Events");
+      }*/
       print("You're so fucking fake -> " + message.data['order']);
       mGoToPageSpecific(message.data['order']);
 
@@ -142,7 +155,12 @@ class _AppViewState extends State<AppView> {
 
   void mConfigureCallBacks(){
 
+
+
     FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
+      /*if(!(getCourierID(message.data['info']) as bool)) {
+        messaging.unsubscribeFromTopic("Events");
+      }*/
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       orderId = message.data['order'] as String;
@@ -187,6 +205,9 @@ class _AppViewState extends State<AppView> {
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message)  {
       print('A new onMessageOpenedApp event was published!');
+      /*if(!(getCourierID(message.data['info']) as bool)) {
+        messaging.unsubscribeFromTopic("Events");
+      }*/
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;
       orderId = message.data['order'] as String;

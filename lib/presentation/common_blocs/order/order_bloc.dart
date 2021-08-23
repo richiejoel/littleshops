@@ -58,7 +58,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     try {
       PushNotificationModel pushNotificationModel = PushNotificationModel
         (businessId: "", messageBody: "Tienes un nuevo pedido ",
-          push: "PUSH", title: "Little Shops te informa", orderId: "");
+          push: "PUSH", title: "Little Shops te informa", orderId: "", userLoggedId: "");
 
       var newOrderModel = event.newOrderModel
           .cloneWith(uid: _authRepository.loggedFirebaseUser.uid);
@@ -88,7 +88,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
             messageBody: "Tienes un nuevo pedido esperando ser completado",
             push: "PUSH",
             businessId: businesses.elementAt(k),
-            orderId: event.newOrderModel.id
+            orderId: event.newOrderModel.id,
+            userLoggedId: _authRepository.loggedFirebaseUser.uid,
         );
         await _pushRepository.generateNotificationPush(modelPush);
       }

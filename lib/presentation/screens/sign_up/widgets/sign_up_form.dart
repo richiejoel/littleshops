@@ -73,6 +73,7 @@ class _SignUpFormState extends State<SignUpForm>{
         email: emailController.text,
         name: nameController.text,
         role: UTIL_CONST.CUSTOMER,
+        token: ""
       );
       signUpBloc.add(
         Submitted(

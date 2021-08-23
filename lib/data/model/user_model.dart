@@ -20,6 +20,8 @@ class UserModel extends Equatable {
   /// The role's user
   final String role;
 
+  final String token;
+
   final List<DeliveryAddressModel> addresses;
 
   /// Get default address
@@ -38,6 +40,7 @@ class UserModel extends Equatable {
     required this.phoneNumber,
     required this.role,
     required this.addresses,
+    required this.token
   });
 
   /// Json data from server turns into model data
@@ -56,6 +59,7 @@ class UserModel extends Equatable {
       phoneNumber: data["phoneNumber"] ?? "",
       role: data["role"] ?? "",
       addresses: addresses,
+      token: data['token']
     );
   }
 
@@ -68,6 +72,7 @@ class UserModel extends Equatable {
       "avatar": this.avatar,
       "phoneNumber": this.phoneNumber,
       "role": this.role,
+      "token": this.token,
       "addresses":
           List<dynamic>.from(this.addresses.map((item) => item.toMap()))
     };
@@ -82,6 +87,7 @@ class UserModel extends Equatable {
     name,
     avatar,
     role,
+    token
   }) {
     return UserModel(
       email: email ?? this.email,
@@ -91,6 +97,7 @@ class UserModel extends Equatable {
       phoneNumber: phoneNumber ?? this.phoneNumber,
       role: role ?? this.role,
       addresses: addresses ?? this.addresses,
+      token: token ?? this.token
     );
   }
 
@@ -101,5 +108,5 @@ class UserModel extends Equatable {
 
   /// Compare two users
   @override
-  List<Object?> get props => [email, id, name, avatar, phoneNumber, role, addresses];
+  List<Object?> get props => [email, id, name, avatar, phoneNumber, role, token, addresses];
 }

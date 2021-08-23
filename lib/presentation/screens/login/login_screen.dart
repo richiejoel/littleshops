@@ -56,6 +56,7 @@ class LoginScreen extends StatelessWidget{
       name: "",
       phoneNumber: "",
       role: "",
+      token: ""
     );
     return Padding(
       padding: EdgeInsets.symmetric(vertical: SizeConfig.defaultSize * 3),

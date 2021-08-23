@@ -4,13 +4,15 @@ class PushNotificationModel {
   final String messageBody;
   final String businessId;
   final String orderId;
+  final String userLoggedId;
 
   PushNotificationModel({
     required this.push,
     required this.title,
     required this.messageBody,
     required this.businessId,
-    required this.orderId
+    required this.orderId,
+    required this.userLoggedId
   });
 
   PushNotificationModel cloneWith({
@@ -18,14 +20,16 @@ class PushNotificationModel {
     title,
     messageBody,
     businessId,
-    orderId
+    orderId,
+    userLoggedId
   }){
     return PushNotificationModel(
         push: push ?? this.push,
         title: title ?? this.title,
         messageBody: messageBody ?? this.messageBody,
         businessId: businessId ?? this.businessId,
-        orderId: orderId ?? this.orderId
+        orderId: orderId ?? this.orderId,
+        userLoggedId: userLoggedId ?? this.userLoggedId
     );
   }
 
@@ -35,7 +39,8 @@ class PushNotificationModel {
       "title": this.title,
       "messageBody": this.messageBody,
       "businessId": this.businessId,
-      "orderId": this.orderId
+      "orderId": this.orderId,
+      "userLoggedId": this.userLoggedId
     };
   }
 
