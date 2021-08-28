@@ -86,3 +86,28 @@ class Submitted extends SignUpEvent {
   }
 
 }
+
+//Courier
+class SubmittedCourier extends SignUpEvent {
+  final UserModel newUser; // contains new user's information
+  final String password;
+  final String confirmPassword;
+  final String businessId;
+
+  const SubmittedCourier({
+    required this.newUser,
+    required this.password,
+    required this.confirmPassword,
+    required this.businessId
+  });
+
+  @override
+  List<Object> get props => [newUser.email];
+
+  @override
+  String toString() {
+    return 'Submitted{email: ${newUser
+        .email}, password: $password, confirmPassword: $confirmPassword}';
+  }
+
+}

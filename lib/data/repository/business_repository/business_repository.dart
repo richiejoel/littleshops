@@ -43,6 +43,15 @@ class BusinessRepository implements IBusinessRepository{
         .catchError((error) {});
   }
 
+  Future<void> updateCouriersBusiness(String uid, String courier) async {
+    await businessCollection.doc(uid).get().then((doc) async {
+      if (doc.exists) {
+        // update
+        await doc.reference.update({"couriers": FieldValue.arrayUnion([courier])});
+      }
+    }).catchError((error) {});
+  }
+
   ///Singleton factory
   static final BusinessRepository _instance =
   BusinessRepository._internal();

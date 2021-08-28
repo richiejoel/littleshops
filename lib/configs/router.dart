@@ -3,6 +3,7 @@ import 'package:littleshops/data/model/order_model.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/presentation/screens/add_business/add_business_screen.dart';
+import 'package:littleshops/presentation/screens/add_courier/add_courier_screen.dart';
 import 'package:littleshops/presentation/screens/add_products/add_products_screen.dart';
 import 'package:littleshops/presentation/screens/cart/cart_screen.dart';
 import 'package:littleshops/presentation/screens/delivery_address/delivery_address_screen.dart';
@@ -34,6 +35,7 @@ class AppRouter {
   static const String ADD_PRODUCTS = '/add_products';
   static const String TO_BE_CHIEF = '/to_be_chief';
   static const String FEEDBACKS = '/feedbacks';
+  static const String ADD_COURIERS = '/add_couriers';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -102,6 +104,10 @@ class AppRouter {
         var product = settings.arguments as Product;
         return MaterialPageRoute(
           builder: (_) => FeedbacksScreen(product: product),
+        );
+      case ADD_COURIERS:
+        return MaterialPageRoute(
+          builder: (_) => AddCourierScreen(),
         );
       default:
         return MaterialPageRoute(

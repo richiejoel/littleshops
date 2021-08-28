@@ -40,6 +40,12 @@ class NavigationDrawer extends StatelessWidget {
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
+                      text: 'My Cart',
+                      icon: Icons.shopping_cart,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.MY_CART),
+                    ),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
                       text: 'My Orders',
                       icon: Icons.shopping_basket,
                       onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
@@ -55,7 +61,7 @@ class NavigationDrawer extends StatelessWidget {
                       mBuildMenuItem(
                         text: 'Add Courier',
                         icon: Icons.person_add,
-                        onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
+                        onClicked: () => mSelectItem(context, UTIL_CONST.ADD_COURIERS),
                       ),
                     ],
                     const SizedBox(height: 5,),
@@ -153,6 +159,12 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case UTIL_CONST.TO_BE_CHIEF:
         Navigator.pushNamed(context, AppRouter.TO_BE_CHIEF);
+        break;
+      case UTIL_CONST.ADD_COURIERS:
+        Navigator.pushNamed(context, AppRouter.ADD_COURIERS);
+        break;
+      case UTIL_CONST.MY_CART:
+        Navigator.pushNamed(context, AppRouter.CART);
         break;
     }
   }

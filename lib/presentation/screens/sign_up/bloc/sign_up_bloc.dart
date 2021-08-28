@@ -52,6 +52,13 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         event.password,
         event.confirmPassword,
       );
+    } else if (event is SubmittedCourier){
+      yield* _mapFormSubmittedCourierToState(
+        event.newUser,
+        event.password,
+        event.confirmPassword,
+        event.businessId
+      );
     }
   }
 
@@ -104,6 +111,29 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     try {
       yield SignUpState.loading();
       await _authRepository.signUp(newUser, password);
+
+      bool isLoggedIn = _authRepository.isLoggedIn();
+      if (isLoggedIn) {
+        yield SignUpState.success();
+      } else {
+        final message = _authRepository.authException;
+        yield SignUpState.failure(message);
+      }
+    } catch (e) {
+      yield SignUpState.failure("SignUp Failure");
+    }
+  }
+
+
+  Stream<SignUpState> _mapFormSubmittedCourierToState(
+      UserModel newUser,
+      String password,
+      String confirmPassword,
+      String businessId
+      ) async* {
+    try {
+      yield SignUpState.loading();
+      await _authRepository.signUp(newUser, password, businessId: businessId);
 
       bool isLoggedIn = _authRepository.isLoggedIn();
       if (isLoggedIn) {

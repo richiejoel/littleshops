@@ -8,7 +8,7 @@ class BusinessModel extends Equatable {
   final dynamic imageUrl;
   final double latitude;
   final double longitude;
-  final List<String> couriers;
+  final List<dynamic>? couriers;
 
   BusinessModel({
     required this.id,
@@ -31,7 +31,7 @@ class BusinessModel extends Equatable {
         imageUrl: data["imageUrl"] ?? "",
         latitude: data["latitude"] ?? "",
         longitude: data["longitude"] ?? "",
-        couriers: data["couriers"] ?? ""
+        couriers: data["couriers"] ?? []
     );
   }
 
@@ -72,6 +72,6 @@ class BusinessModel extends Equatable {
   
   @override
   List<Object?> get props => [id, chiefId, name,
-    description, imageUrl, latitude, longitude];
+    description, imageUrl, latitude, longitude, couriers];
 
 }

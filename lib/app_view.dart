@@ -41,7 +41,7 @@ class _AppViewState extends State<AppView> {
   NavigatorState? get _navigator => _navigatorKey.currentState;
 
   //ini rjgman
-  BusinessRepository _businessRepository = BusinessRepository();
+  //BusinessRepository _businessRepository = BusinessRepository();
   AuthRepository _authRepository = AuthRepository();
   OrderRepository _orderRepository = OrderRepository();
   UserRepository _userRepository = UserRepository();
@@ -105,7 +105,7 @@ class _AppViewState extends State<AppView> {
   }
 
   // ini rjgman
-  Future<bool> getCourierID(String businessId) async {
+ /* Future<bool> getCourierID(String businessId) async {
     final loggedFirebaseUser = _authRepository.loggedFirebaseUser;
     UserModel user = await _userRepository.getUserById(loggedFirebaseUser.uid);
     if(user.role != UTIL_CONST.COURIER){
@@ -119,7 +119,7 @@ class _AppViewState extends State<AppView> {
       //return loggedFirebaseUser.uid == model.couriers.elementAt(i);
     }
     return false;
-  }
+  }*/
 
   Future<dynamic> onSelectNotification(payload) async {
     // implement the navigation logic
