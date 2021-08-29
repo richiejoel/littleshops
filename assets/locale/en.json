@@ -182,6 +182,9 @@
   "business_added": "Business successfully added!",
   "name_business": "Name business",
   "description_business": "Description business",
-  "your_business": "Your Business"
+  "your_business": "Your Business",
+  "complete_delivery": "Complete Delivery",
+  "delivery_successfully": "Delivery Successfully!",
+  "sign_up": "Sign Up"
 }
 

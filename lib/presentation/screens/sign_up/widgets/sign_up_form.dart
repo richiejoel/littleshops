@@ -118,7 +118,10 @@ class _SignUpFormState extends State<SignUpForm>{
             child: Form(
               child: Column(
                 children: <Widget>[
-                  Text("Sign Up", style: FONT_CONST.SUBTITLE,),
+                  Text(
+                    Translate.of(context).translate('sign_up'),
+                    style: FONT_CONST.SUBTITLE,
+                  ),
                   SizedBox(height: SizeConfig.defaultSize * 3),
                   _buildNameInput(),
                   SizedBox(height: SizeConfig.defaultSize),

@@ -25,3 +25,13 @@ class RemoveOrder extends OrderEvent {
 
   List<Object> get props => [order];
 }
+
+class ApproveOrder extends OrderEvent {
+  final String orderID;
+  final String key;
+  final bool value;
+
+  ApproveOrder(this.orderID, this.key, this.value);
+
+  List<Object> get props => [orderID, key, value];
+}

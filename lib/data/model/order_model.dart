@@ -14,6 +14,7 @@ class OrderModel extends Equatable {
   final double deliveryFee;
   final double coupon;
   final Timestamp createdAt;
+  final bool isDelivered;
 
   bool get isDelivering {
     var now = Timestamp.now();
@@ -34,6 +35,7 @@ class OrderModel extends Equatable {
     required this.deliveryFee,
     required this.coupon,
     required this.createdAt,
+    required this.isDelivered,
   });
 
   /// Json data from server turns into model data
@@ -51,6 +53,7 @@ class OrderModel extends Equatable {
       deliveryFee: data["deliveryFee"],
       coupon: data["coupon"],
       createdAt: data["createdAt"],
+        isDelivered: data["isDelivered"]
     );
   }
 
@@ -67,6 +70,7 @@ class OrderModel extends Equatable {
       "deliveryFee": this.deliveryFee,
       "coupon": this.coupon,
       "createdAt": this.createdAt,
+      "isDelivered": this.isDelivered
     };
   }
 
@@ -82,6 +86,7 @@ class OrderModel extends Equatable {
     deliveryFee,
     coupon,
     createdAt,
+    isDelivered
   }) {
     return OrderModel(
       id: id ?? this.id,
@@ -94,6 +99,7 @@ class OrderModel extends Equatable {
       deliveryFee: deliveryFee ?? this.deliveryFee,
       coupon: coupon ?? this.coupon,
       createdAt: createdAt ?? this.createdAt,
+        isDelivered: isDelivered ?? this.isDelivered
     );
   }
 
@@ -108,6 +114,7 @@ class OrderModel extends Equatable {
     deliveryFee,
     coupon,
     createdAt,
+    isDelivered
   ];
 }
 

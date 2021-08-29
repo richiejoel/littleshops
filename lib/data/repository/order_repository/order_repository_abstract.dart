@@ -17,4 +17,6 @@ abstract class IOrderRepository {
   Future<void> removeOrderModel(OrderModel order);
 
   Future<OrderModel> getOrderById(String pid);
+
+  void updateOneDataOrder(String uid, String key, bool value);
 }

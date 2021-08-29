@@ -24,6 +24,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       yield* _mapAddOrderToState(event);
     } else if (event is RemoveOrder) {
       yield* _mapRemoveOrderToState(event);
+    } else if( event is ApproveOrder){
+      yield* _mapApproveOrderToState(event);
     }
   }
 
@@ -39,7 +41,7 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       List<OrderModel> deliveredOrders = [];
 
       orders.forEach((order) {
-        if (order.isDelivering) {
+        if (!order.isDelivered) {
           deliveringOrders.add(order);
         } else {
           deliveredOrders.add(order);
@@ -110,4 +112,15 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
       print(e.toString());
     }
   }
+
+  Stream<OrderState> _mapApproveOrderToState(
+      ApproveOrder event) async* {
+    try {
+       _orderRepository.updateOneDataOrder(event.orderID, event.key, event.value);
+      //add(LoadMyOrders());
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
 }

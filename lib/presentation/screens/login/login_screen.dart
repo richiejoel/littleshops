@@ -65,7 +65,7 @@ class LoginScreen extends StatelessWidget{
         children: <Widget>[
           Text(
             Translate.of(context).translate('don\'t_have_an_account'),
-            style: FONT_CONST.REGULAR_DEFAULT_20
+            style: FONT_CONST.LOGIN_TEXT
           ),
           SizedBox(width: 5),
           GestureDetector(
@@ -75,8 +75,8 @@ class LoginScreen extends StatelessWidget{
               arguments: initialUser
             ),
             child: Text(
-              Translate.of(context).translate('register'),
-              style: TextStyle(color: Colors.white )//FONT_CONST.BOLD_PRIMARY_20,
+              Translate.of(context).translate('register_now'),
+              style: FONT_CONST.LOGIN_TEXT_EVENT
             ),
           ),
         ],

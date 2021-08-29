@@ -74,6 +74,20 @@ class FONT_CONST {
     fontSize: SizeConfig.defaultSize * 2,
   );
 
+  static final LOGIN_TEXT = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.w300,
+    color: COLOR_CONST.whiteColor,
+    fontSize: SizeConfig.defaultSize * 1.4,
+  );
+
+  static final LOGIN_TEXT_EVENT = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: COLOR_CONST.whiteColor,
+    fontSize: SizeConfig.defaultSize * 1.5,
+  );
+
   //REGULAR
   static final REGULAR_DEFAULT = REGULAR.copyWith(color: COLOR_CONST.textColor);
   static final REGULAR_DEFAULT_16 =

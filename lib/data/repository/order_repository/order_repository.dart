@@ -36,6 +36,16 @@ class OrderRepository implements IOrderRepository {
         .catchError((error) {});
   }
 
+  @override
+  void updateOneDataOrder(String uid, String key, bool value)  {
+     orderCollection.doc(uid).get().then((doc)  {
+      if (doc.exists) {
+        // update
+         doc.reference.update({key: value});
+      }
+    }).catchError((error) {});
+  }
+
   ///Singleton factory
   static final OrderRepository _instance =
   OrderRepository._internal();

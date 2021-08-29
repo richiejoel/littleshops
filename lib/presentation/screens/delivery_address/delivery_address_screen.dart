@@ -17,7 +17,10 @@ class DeliveryAddressModelScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Translate.of(context).translate("delivery_address")),
+        title: Text(
+            Translate.of(context).translate("delivery_address"),
+            style: FONT_CONST.TITLE_DRAWER
+        ),
       ),
       body: SafeArea(
         child: BlocBuilder<ProfileBloc, ProfileState>(

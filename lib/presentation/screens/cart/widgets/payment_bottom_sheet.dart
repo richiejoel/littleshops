@@ -89,6 +89,7 @@ class _PaymentBottomSheetState extends State<PaymentBottomSheet> {
         priceOfGoods: priceOfGoods,
         deliveryFee: deliveryFee,
         coupon: coupon,
+        isDelivered: false
       );
       // Add event add order
       BlocProvider.of<OrderBloc>(context).add(AddOrder(newOrderModel));
