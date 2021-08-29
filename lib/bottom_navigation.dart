@@ -12,22 +12,29 @@ import 'navigation_drawer.dart';
 
 
 class BottomNavigation extends StatefulWidget {
-  BottomNavigation({Key? key}) : super(key: key);
+  final int position;
+  BottomNavigation({Key? key, this.position = 0}) : super(key: key);
 
   @override
   _BottomNavigationState createState() {
-    return _BottomNavigationState();
+    return _BottomNavigationState(position: position);
   }
 }
 
 class _BottomNavigationState extends State<BottomNavigation>
     with WidgetsBindingObserver {
+
+  final int position;
+  _BottomNavigationState({required this.position});
+
   int selectedIndex = 0;
+
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance!.addObserver(this);
+    selectedIndex = position;
   }
 
   @override

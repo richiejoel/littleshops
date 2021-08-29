@@ -35,7 +35,7 @@ class _ProductImagesWidgetState extends State<ProductImagesWidget> {
                 onTap: () {
                   Navigator.pushNamed(
                     context,
-                    AppRouter.FAVOURITE, //DETAIL_IMAGE
+                    AppRouter.DETAIL_IMAGE, //DETAIL_IMAGE
                     arguments: product.images[index],
                   );
                 },

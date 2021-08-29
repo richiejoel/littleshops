@@ -36,6 +36,7 @@ dependencies:
   #images
   image_picker: ^0.7.2
   image: ^3.0.2
+  image_gallery_saver: ^1.6.9
   #Maps
   google_maps_flutter: ^2.0.6
   geolocator: ^7.4.0

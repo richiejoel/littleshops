@@ -34,9 +34,9 @@ class NavigationDrawer extends StatelessWidget {
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'Favourites',
-                      icon: Icons.favorite_border,
-                      onClicked: () => mSelectItem(context, UTIL_CONST.FAVOURITE),
+                      text: 'Shops',
+                      icon: Icons.add_business_rounded,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.SHOPS),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
@@ -69,6 +69,12 @@ class NavigationDrawer extends StatelessWidget {
                       text: 'To be Chief',
                       icon: Icons.assignment_ind_outlined,
                       onClicked: () => mSelectItem(context, UTIL_CONST.TO_BE_CHIEF),
+                    ),
+                    const SizedBox(height: 5,),
+                    mBuildMenuItem(
+                      text: 'Delivery Address',
+                      icon: Icons.motorcycle_outlined,
+                      onClicked: () => mSelectItem(context, UTIL_CONST.DELIVERY_ADDRESS),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
@@ -165,6 +171,12 @@ class NavigationDrawer extends StatelessWidget {
         break;
       case UTIL_CONST.MY_CART:
         Navigator.pushNamed(context, AppRouter.CART);
+        break;
+      case UTIL_CONST.SHOPS:
+        Navigator.pushNamed(context, AppRouter.SHOPS);
+        break;
+      case UTIL_CONST.DELIVERY_ADDRESS:
+        Navigator.pushNamed(context, AppRouter.DELIVERY_ADDRESS);
         break;
     }
   }

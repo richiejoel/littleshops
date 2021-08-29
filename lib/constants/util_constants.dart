@@ -9,6 +9,8 @@ class UTIL_CONST {
   static const String ADD_PRODUCTS = "ADD_PRODUCTS";
   static const String TO_BE_CHIEF = "TO_BE_CHIEF";
   static const String ADD_COURIERS = "ADD_COURIERS";
+  static const String SHOPS = "SHOPS";
+  static const String DELIVERY_ADDRESS = "DELIVERY_ADDRESS";
 
 
   /// ROLE

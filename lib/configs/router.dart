@@ -8,6 +8,7 @@ import 'package:littleshops/presentation/screens/add_courier/add_courier_screen.
 import 'package:littleshops/presentation/screens/add_products/add_products_screen.dart';
 import 'package:littleshops/presentation/screens/cart/cart_screen.dart';
 import 'package:littleshops/presentation/screens/delivery_address/delivery_address_screen.dart';
+import 'package:littleshops/presentation/screens/detail_image/detail_image_screen.dart';
 import 'package:littleshops/presentation/screens/detail_order/detail_order_screen.dart';
 import 'package:littleshops/presentation/screens/detail_product/detail_product_screen.dart';
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
@@ -41,6 +42,7 @@ class AppRouter {
   static const String ADD_COURIERS = '/add_couriers';
   static const String SHOPS = '/shops';
   static const String PRODUCTS_BY_BUSINESS = '/products_by_business';
+  static const String DETAIL_IMAGE = '/detail_image';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -117,12 +119,17 @@ class AppRouter {
         );
       case SHOPS:
         return MaterialPageRoute(
-          builder: (_) => ShopsScreen(),
+          builder: (_) => BottomNavigation(position: 1,),
         );
       case PRODUCTS_BY_BUSINESS:
         var business = settings.arguments as BusinessModel;
         return MaterialPageRoute(
           builder: (_) => ProductFilterScreen(business: business,),
+        );
+      case DETAIL_IMAGE:
+        var imageUrl = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (_) => DetailImageScreen(imageUrl: imageUrl,),
         );
       default:
         return MaterialPageRoute(
