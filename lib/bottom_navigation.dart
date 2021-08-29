@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
+import 'package:littleshops/presentation/screens/shops/shops.dart';
 import 'package:littleshops/presentation/widgets/buttons/cart_button.dart';
 import 'package:littleshops/utils/translate.dart';
 import 'package:littleshops/presentation/screens/home_page/home_screen.dart';
-import 'package:littleshops/presentation/screens/profile_page/profile_screen.dart';
 import 'package:littleshops/presentation/screens/map_page/map_screen.dart';
 
 import 'navigation_drawer.dart';
@@ -61,7 +61,7 @@ class _BottomNavigationState extends State<BottomNavigation>
       body: IndexedStack(
         children: [
           HomeScreen(),
-          ProfileScreen(),
+          ShopsScreen(),
           MapScreen(),
         ],
         index: selectedIndex,
@@ -73,8 +73,8 @@ class _BottomNavigationState extends State<BottomNavigation>
             label: Translate.of(context).translate('home'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle_outlined),
-            label: Translate.of(context).translate('profile'),
+            icon: Icon(Icons.add_business_rounded),
+            label: Translate.of(context).translate('shops'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_location_alt_sharp),

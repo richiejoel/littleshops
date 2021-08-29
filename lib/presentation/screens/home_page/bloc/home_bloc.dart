@@ -20,6 +20,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     } else if (event is RefreshHome) {
       yield HomeLoading();
       yield* _mapLoadHomeToState();
+    } else if (event is LoadHomeBusiness){
+      yield* _mapLoadProductByBusinessToState(event.businessID);
+    } else if (event is RefreshProductByBusiness){
+      yield HomeLoading();
+      yield* _mapLoadProductByBusinessToState(event.businessID);
     }
   }
 
@@ -37,6 +42,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       yield HomeLoadFailure(e.toString());
     }
   }
+
+  Stream<HomeState> _mapLoadProductByBusinessToState(String businessID) async* {
+    try {
+      List<Product> productsByBusiness = await _productRepository.fetchProductsByBusiness(businessID);
+      yield HomeLoadedBusiness(productsByBusiness: productsByBusiness );
+    } catch (e) {
+      yield HomeLoadFailure(e.toString());
+    }
+  }
+
+
 }
 
 List<Product> mListStatic(){

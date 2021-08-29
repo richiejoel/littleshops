@@ -172,6 +172,7 @@
   "description_product": "Descripción del producto",
   "original_price": "Precio Original",
   "percent_off": "Descuento",
-  "quantity_product": "Cantida de Productos"
+  "quantity_product": "Cantida de Productos",
+  "shops": "Tiendas"
 }
 

@@ -112,7 +112,7 @@ class MapSampleState extends State<MapSample> {
           position: LatLng(busy.latitude, busy.longitude),
           infoWindow: InfoWindow(title: busy.name),
           //icon: await getMarkerImageFromUrl(busy.imageUrl, targetWidth: 100),
-          icon: await getMarkerIcon(busy.imageUrl, Size(100.0, 100.0)),
+          icon: await getMarkerIcon(busy.imageUrl, Size(130.0, 130.0)),
       );
       markersList.add(marker!);
        setState(() {

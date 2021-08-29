@@ -116,6 +116,17 @@ class ProductRepository implements IProductRepository{
         .catchError((error) {});
   }
 
+  @override
+  Future<List<Product>> fetchProductsByBusiness(String? businessId) async {
+    return await productCollection
+        .where("businessId", isEqualTo: businessId)
+        .get()
+        .then((snapshot) => snapshot.docs
+        .map((doc) => Product.fromMap(doc.id, doc.data()!))
+        .toList())
+        .catchError((error) {});
+  }
+
   ///Singleton factory
   static final ProductRepository _instance =
   ProductRepository._internal();

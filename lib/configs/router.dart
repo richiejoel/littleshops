@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/order_model.dart';
 import 'package:littleshops/data/model/product_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
@@ -12,7 +13,9 @@ import 'package:littleshops/presentation/screens/detail_product/detail_product_s
 import 'package:littleshops/presentation/screens/favourite/favourite_screen.dart';
 import 'package:littleshops/presentation/screens/feedbacks/feebacks_screen.dart';
 import 'package:littleshops/presentation/screens/my_orders/my_orders_screen.dart';
+import 'package:littleshops/presentation/screens/products_filter/products_filter.dart';
 import 'package:littleshops/presentation/screens/profile/profile_screen.dart';
+import 'package:littleshops/presentation/screens/shops/shops.dart';
 import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
 
 import 'package:littleshops/presentation/screens/splash_screen/splash_screen.dart';
@@ -36,6 +39,9 @@ class AppRouter {
   static const String TO_BE_CHIEF = '/to_be_chief';
   static const String FEEDBACKS = '/feedbacks';
   static const String ADD_COURIERS = '/add_couriers';
+  static const String SHOPS = '/shops';
+  static const String PRODUCTS_BY_BUSINESS = '/products_by_business';
+
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -109,6 +115,15 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => AddCourierScreen(),
         );
+      case SHOPS:
+        return MaterialPageRoute(
+          builder: (_) => ShopsScreen(),
+        );
+      case PRODUCTS_BY_BUSINESS:
+        var business = settings.arguments as BusinessModel;
+        return MaterialPageRoute(
+          builder: (_) => ProductFilterScreen(business: business,),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => Scaffold(
@@ -119,7 +134,6 @@ class AppRouter {
         );
     }
   }
-
 
     //DELIVERY_ADDRESS
   ///Singleton factory

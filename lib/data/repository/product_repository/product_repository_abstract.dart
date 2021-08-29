@@ -25,4 +25,6 @@ abstract class IProductRepository {
 
   Future<String> fetchChiefByProductId(String? productId);
 
+  Future<List<Product>> fetchProductsByBusiness(String? businessId);
+
 }

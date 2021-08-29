@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:littleshops/data/model/product_model.dart';
 
 import 'package:littleshops/presentation/screens/home_page/bloc/home_bloc.dart';
 
@@ -20,6 +21,16 @@ class HomeLoaded extends HomeState {
 
   @override
   List<Object?> get props => [homeResponse];
+}
+
+/// alredy data business
+class HomeLoadedBusiness extends HomeState {
+  final List<Product> productsByBusiness;
+
+  const HomeLoadedBusiness({required this.productsByBusiness});
+
+  @override
+  List<Object?> get props => [productsByBusiness];
 }
 
 /// Failure
