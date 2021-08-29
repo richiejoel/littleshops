@@ -185,7 +185,7 @@ class _AddCourierScreenState extends State<AddCourierScreen>{
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Text("Add Courier", style: FONT_CONST.SUBTITLE_SCREEN),
+                          Text(Translate.of(context).translate('add_courier'), style: FONT_CONST.SUBTITLE_SCREEN),
                           SizedBox(height: SizeConfig.defaultSize * 2),
 
                           //_buildBusinessPicker(context, listBusiness!),
@@ -333,7 +333,7 @@ class _AddCourierScreenState extends State<AddCourierScreen>{
   _buildBusinessPicker(BuildContext context, List<BusinessModel>? business) {
     return DropdownButtonFormField<BusinessModel>(
       decoration: InputDecoration(
-        labelText: Translate.of(context).translate("product_categories"),
+        labelText: Translate.of(context).translate("your_business"),
       ),
       onChanged: (business) => onBusinessChanged(context, business!),
       items: getDropdownItemsBusiness(business!),

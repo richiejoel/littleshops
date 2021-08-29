@@ -10,6 +10,7 @@ import 'package:littleshops/presentation/common_blocs/authentication/authenticat
 import 'package:littleshops/presentation/common_blocs/authentication/authentication_event.dart';
 import 'package:littleshops/presentation/common_blocs/profile/profile_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/profile/profile_state.dart';
+import 'package:littleshops/utils/translate.dart';
 
 class NavigationDrawer extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -28,57 +29,57 @@ class NavigationDrawer extends StatelessWidget {
                     mDrawerHeader(),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'Home',
+                      text: Translate.of(context).translate('home'),
                       icon: Icons.home,
                       onClicked: () => mSelectItem(context, UTIL_CONST.HOME),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'Shops',
+                      text: Translate.of(context).translate('shops'),
                       icon: Icons.add_business_rounded,
                       onClicked: () => mSelectItem(context, UTIL_CONST.SHOPS),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'My Cart',
+                      text: Translate.of(context).translate('my_cart_drawer'),
                       icon: Icons.shopping_cart,
                       onClicked: () => mSelectItem(context, UTIL_CONST.MY_CART),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'My Orders',
+                      text: Translate.of(context).translate('my_orders'),
                       icon: Icons.shopping_basket,
                       onClicked: () => mSelectItem(context, UTIL_CONST.MY_ORDERS),
                     ),
                     if(state.loggedUser.role == UTIL_CONST.CHIEF) ... [
                       const SizedBox(height: 5,),
                       mBuildMenuItem(
-                        text: 'Add Products',
+                        text: Translate.of(context).translate('add_product'),
                         icon: Icons.add_business,
                         onClicked: () => mSelectItem(context, UTIL_CONST.ADD_PRODUCTS),
                       ),
                       const SizedBox(height: 5,),
                       mBuildMenuItem(
-                        text: 'Add Courier',
+                        text: Translate.of(context).translate('add_courier'),
                         icon: Icons.person_add,
                         onClicked: () => mSelectItem(context, UTIL_CONST.ADD_COURIERS),
                       ),
                     ],
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'To be Chief',
+                      text: Translate.of(context).translate('to_be_chief'),
                       icon: Icons.assignment_ind_outlined,
                       onClicked: () => mSelectItem(context, UTIL_CONST.TO_BE_CHIEF),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'Delivery Address',
+                      text: Translate.of(context).translate('delivery_address'),
                       icon: Icons.motorcycle_outlined,
                       onClicked: () => mSelectItem(context, UTIL_CONST.DELIVERY_ADDRESS),
                     ),
                     const SizedBox(height: 5,),
                     mBuildMenuItem(
-                      text: 'Profile',
+                      text: Translate.of(context).translate('profile'),
                       icon: Icons.person,
                       onClicked: () => mSelectItem(context, UTIL_CONST.PROFILE),
                     ),
@@ -86,7 +87,7 @@ class NavigationDrawer extends StatelessWidget {
                     Divider(color: COLOR_CONST.primaryColor,),
                     const SizedBox(height: 10,),
                     mBuildMenuItem(
-                      text: 'Log out',
+                      text: Translate.of(context).translate('log_out'),
                       icon: Icons.exit_to_app_rounded,
                       onClicked: () => mSignOut(context),
                     ),

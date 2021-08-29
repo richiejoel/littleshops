@@ -134,7 +134,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                             child: SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Text("Add products", style: FONT_CONST.SUBTITLE_SCREEN),
+                                  Text(Translate.of(context).translate('add_product'), style: FONT_CONST.SUBTITLE_SCREEN),
                                   SizedBox(height: SizeConfig.defaultSize * 2),
                                   _buildNameProduct(context),
                                   SizedBox(height: SizeConfig.defaultSize),
@@ -269,7 +269,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   _buildBusinessPicker(BuildContext context, List<BusinessModel> business) {
     return DropdownButtonFormField<BusinessModel>(
       decoration: InputDecoration(
-        labelText: Translate.of(context).translate("product_categories"),
+        labelText: Translate.of(context).translate("your_business"),
       ),
       onChanged: (business) => onBusinessChanged(context, business!),
       items: getDropdownItemsBusiness(business),

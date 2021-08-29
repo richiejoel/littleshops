@@ -260,7 +260,6 @@ class _AppViewState extends State<AppView> {
               theme: AppTheme.currentTheme,
               onGenerateRoute: AppRouter.generateRoute,
               initialRoute: AppRouter.SPLASH,
-              locale: AppLanguage.defaultLanguage,
               supportedLocales: AppLanguage.supportLanguage,
               localizationsDelegates: [
                 Translate.delegate,
@@ -268,6 +267,7 @@ class _AppViewState extends State<AppView> {
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
+              locale: AppLanguage.defaultLanguage,
               builder: (context, child) {
                 return BlocListener<AuthenticationBloc, AuthenticationState>(
                   listener: (context, authState) {

@@ -173,6 +173,15 @@
   "original_price": "Original Price",
   "percent_off": "Percent Off",
   "quantity_product": "Product Quantity",
-  "shops": "Shops"
+  "shops": "Shops",
+  "to_be_chief": "To be chief",
+  "add_courier": "Add Courier",
+  "add_product": "Add Product",
+  "my_cart_drawer": "My Cart",
+  "add_business": "Add Business",
+  "business_added": "Business successfully added!",
+  "name_business": "Name business",
+  "description_business": "Description business",
+  "your_business": "Your Business"
 }
 

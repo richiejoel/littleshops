@@ -88,7 +88,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Text("Add Business", style: FONT_CONST.SUBTITLE_SCREEN),
+                          Text(Translate.of(context).translate('add_business'), style: FONT_CONST.SUBTITLE_SCREEN),
                           SizedBox(height: SizeConfig.defaultSize * 2),
                           _buildProductsPictures(context),
                           SizedBox(height: SizeConfig.defaultSize),
@@ -124,7 +124,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
       controller: nameBusinessController,
       keyboardType: TextInputType.text,
       decoration: InputDecoration(
-        hintText: Translate.of(context).translate('name_product'),
+        hintText: Translate.of(context).translate('name_business'),
         suffixIcon: Icon(Icons.person_outline),
       ),
     );
@@ -135,7 +135,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
       controller: descriptionBusinessController,
       keyboardType: TextInputType.multiline,
       decoration: InputDecoration(
-        hintText: Translate.of(context).translate('description_product'),
+        hintText: Translate.of(context).translate('description_business'),
         suffixIcon: Icon(Icons.person_outline),
       ),
     );
@@ -206,7 +206,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
       );
       BlocProvider.of<BusinessBloc>(context).add(AddBusiness(addBusiness, imageCurrent!));
       UtilDialog.hideWaiting(context);
-      UtilDialog.showInformation(context, content: "Negocio añadido con éxito!!");
+      UtilDialog.showInformation(context, content: Translate.of(context).translate('business_added'));
     }
   }
 
