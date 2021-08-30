@@ -30,7 +30,7 @@ class CategoryCard extends StatelessWidget {
             left: SizeConfig.defaultSize * 2,
             child: Text(
               Translate.of(context).translate("${category.name}"),
-              style: FONT_CONST.BOLD_WHITE_20,
+              style: FONT_CONST.CATEGORY_TEXT, //BOLD_WHITE_20
             ),
           ),
         ],

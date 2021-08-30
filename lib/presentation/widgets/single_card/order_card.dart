@@ -35,12 +35,12 @@ class OrderModelCard extends StatelessWidget {
                     style: FONT_CONST.REGULAR_DEFAULT_16,
                     children: [
                       TextSpan(
-                        text: order.isDelivering
+                        text: !order.isDelivered
                             ? Translate.of(context).translate("be_delivering")
                             : Translate.of(context).translate("delivered"),
                         style: FONT_CONST.BOLD_PRIMARY_16,
                       ),
-                      if (!order.isDelivering)
+                      if ("because" == "why")
                         TextSpan(
                           text:
                           " (${UtilFormatter.formatTimeStamp(order.receivedDate)})",

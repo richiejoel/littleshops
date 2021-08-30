@@ -88,6 +88,31 @@ class FONT_CONST {
     fontSize: SizeConfig.defaultSize * 1.5,
   );
 
+  static final CATEGORY_TEXT = TextStyle(
+    fontFamily: 'Poppins',
+    fontWeight: FontWeight.bold,
+    color: COLOR_CONST.whiteColor,
+    fontSize: SizeConfig.defaultSize * 1.7,
+      shadows: [
+        Shadow( // bottomLeft
+            offset: Offset(-1.5, -1.5),
+            color: Colors.black
+        ),
+        Shadow( // bottomRight
+            offset: Offset(1.5, -1.5),
+            color: Colors.black
+        ),
+        Shadow( // topRight
+            offset: Offset(1.5, 1.5),
+            color: Colors.black
+        ),
+        Shadow( // topLeft
+            offset: Offset(-1.5, 1.5),
+            color: Colors.black
+        ),
+      ]
+  );
+
   //REGULAR
   static final REGULAR_DEFAULT = REGULAR.copyWith(color: COLOR_CONST.textColor);
   static final REGULAR_DEFAULT_16 =
