@@ -72,7 +72,7 @@ class DeliveryAddressModelScreen extends StatelessWidget {
 
   _buildNoAddress(BuildContext context) {
     return Center(
-      child: Image.asset(IMAGE_CONSTANT.CART_EMPTY),//ADD_ADDRESS
+      child: Image.asset(IMAGE_CONSTANT.ADD_ADDRESS),//ADD_ADDRESS
     );
   }
 

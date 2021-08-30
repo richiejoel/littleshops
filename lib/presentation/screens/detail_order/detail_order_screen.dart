@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/configs/router.dart';
 import 'package:littleshops/configs/size_config.dart';
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
@@ -36,8 +37,13 @@ class DetailOrderScreen extends StatelessWidget {
       context,
       Translate.of(context).translate("cancel_successfully"),
     );
+
+    Navigator.pushNamed(
+      context,
+      AppRouter.HOME,
+    );
     // Pop this screen
-    Navigator.pop(context);
+    //Navigator.pop(context);
   }
 
   void _onApproveOrderModel(BuildContext context) {
@@ -49,8 +55,13 @@ class DetailOrderScreen extends StatelessWidget {
       context,
       Translate.of(context).translate("delivery_successfully"),
     );
+
+    Navigator.pushNamed(
+      context,
+      AppRouter.HOME,
+    );
     // Pop this screen
-    Navigator.pop(context);
+    //Navigator.pop(context);
   }
 
   @override
@@ -59,7 +70,7 @@ class DetailOrderScreen extends StatelessWidget {
         builder: (context, state) {
           if(state is ProfileLoaded){
             return Scaffold(
-              backgroundColor: Colors.white,
+              backgroundColor: COLOR_CONST.backgroundColor,
               appBar: AppBar(
                   title: Text(
                     Translate.of(context).translate("detail_order"),
@@ -87,7 +98,10 @@ class DetailOrderScreen extends StatelessWidget {
                       _buildApproveDeliveryButton(context)
                     ],
                     const SizedBox(height: 7,),
-                    _buildRemoveButton(context),
+                    if (state.loggedUser.role == UTIL_CONST.CUSTOMER ||
+                        state.loggedUser.role == UTIL_CONST.CHIEF) ... [
+                      _buildRemoveButton(context)
+                    ],
                   ],
                 ),
               ),

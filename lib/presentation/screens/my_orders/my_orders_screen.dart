@@ -106,7 +106,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   _buildListOrders(List<OrderModel> orders) {
     return orders.isEmpty
         ? Center(
-      child: Image.asset(IMAGE_CONSTANT.CART_EMPTY),//IMAGE_CONST.NO_RECORD
+      child: Image.asset(IMAGE_CONSTANT.NO_RECORD),
     )
         : ListView.builder(
       physics: BouncingScrollPhysics(),

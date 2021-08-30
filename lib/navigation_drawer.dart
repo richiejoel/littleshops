@@ -55,7 +55,7 @@ class NavigationDrawer extends StatelessWidget {
                       const SizedBox(height: 5,),
                       mBuildMenuItem(
                         text: Translate.of(context).translate('add_product'),
-                        icon: Icons.add_business,
+                        icon: Icons.shopping_bag_outlined,
                         onClicked: () => mSelectItem(context, UTIL_CONST.ADD_PRODUCTS),
                       ),
                       const SizedBox(height: 5,),

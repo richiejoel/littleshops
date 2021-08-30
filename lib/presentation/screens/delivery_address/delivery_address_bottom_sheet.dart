@@ -131,16 +131,19 @@ class _DeliveryAddressModelBottomSheetState
     return SingleChildScrollView(
       padding: EdgeInsets.symmetric(vertical: SizeConfig.defaultPadding),
       child: SafeArea(
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            _buildInput(),
-            _buildGoogleMapOption(),
-            _buildSwitchDefaultAddress(),
-            _buildDeleteButton(),
-            _buildSubmitButton(),
-          ],
-        ),
+        child: Container(
+          color: COLOR_CONST.backgroundColor,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              _buildInput(),
+              //_buildGoogleMapOption(),
+              _buildSwitchDefaultAddress(),
+              _buildDeleteButton(),
+              _buildSubmitButton(),
+            ],
+          ),
+        )
       ),
     );
   }
