@@ -4,4 +4,6 @@ class IMAGE_CONSTANT {
    static const DEFAULT_AVATAR = "assets/images/default_avatar.png";
    static const NO_RECORD = "assets/images/no_record.png";
    static const ADD_ADDRESS = "assets/images/add_address.png";
+   static const NO_PRODUCTS = "assets/images/no_image.png";
+
 }

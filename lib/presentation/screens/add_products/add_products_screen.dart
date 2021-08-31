@@ -366,7 +366,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                 fit: BoxFit.cover,
                 image: imageCurrent != null
                     ? FileImage(File(imageCurrent!.path))
-                    : AssetImage(IMAGE_CONSTANT.DEFAULT_AVATAR)
+                    : AssetImage(IMAGE_CONSTANT.NO_PRODUCTS)
                 as ImageProvider<Object>,
               )
             ),
@@ -403,7 +403,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                     fit: BoxFit.cover,
                     image: imageCurrentTwo != null
                         ? FileImage(File(imageCurrentTwo!.path))
-                        : AssetImage(IMAGE_CONSTANT.DEFAULT_AVATAR)
+                        : AssetImage(IMAGE_CONSTANT.NO_PRODUCTS)
                     as ImageProvider<Object>,
                   )
               ),
@@ -440,7 +440,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                     fit: BoxFit.cover,
                     image: imageCurrentThree != null
                         ? FileImage(File(imageCurrentThree!.path))
-                        : AssetImage(IMAGE_CONSTANT.DEFAULT_AVATAR)
+                        : AssetImage(IMAGE_CONSTANT.NO_PRODUCTS)
                     as ImageProvider<Object>,
                   )
               ),
@@ -477,7 +477,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
                     fit: BoxFit.cover,
                     image: imageCurrentFour != null
                         ? FileImage(File(imageCurrentFour!.path))
-                        : AssetImage(IMAGE_CONSTANT.DEFAULT_AVATAR)
+                        : AssetImage(IMAGE_CONSTANT.NO_PRODUCTS)
                     as ImageProvider<Object>,
                   )
               ),
