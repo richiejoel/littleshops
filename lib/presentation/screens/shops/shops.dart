@@ -17,6 +17,12 @@ class ShopsScreen extends StatefulWidget{
 class _ShopsScreenState extends State<ShopsScreen>{
 
   @override
+  void initState() {
+    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
    return Scaffold(
      body: _builderBody(context),
@@ -38,7 +44,7 @@ class _ShopsScreenState extends State<ShopsScreen>{
   }
 
   _builderBody(BuildContext context){
-    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
+
     return BlocBuilder<BusinessBloc, BusinessState>(
         builder: (context, state) {
           if(state is BusinessLoaded ){

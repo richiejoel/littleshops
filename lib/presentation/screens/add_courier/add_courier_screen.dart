@@ -63,6 +63,7 @@ class _AddCourierScreenState extends State<AddCourierScreen>{
 
   @override
   void initState() {
+    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     super.initState();
   }
 
@@ -134,7 +135,6 @@ class _AddCourierScreenState extends State<AddCourierScreen>{
   Widget build(BuildContext context)  {
 
     //mGenerateBusiness();
-    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     return BlocProvider(
         create: (context) => SignUpBloc(),
         child: BlocListener<SignUpBloc, SignUpState>(

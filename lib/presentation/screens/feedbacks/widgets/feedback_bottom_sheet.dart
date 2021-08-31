@@ -36,20 +36,25 @@ class _FeedbackBottomSheetState extends State<FeedbackBottomSheet> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        padding: EdgeInsets.all(15),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildHeader(),
-            SizedBox(height: SizeConfig.defaultSize * 2),
-            _buildCommentSection(),
-            SizedBox(height: SizeConfig.defaultSize * 2),
-            _buildRatingSection(),
-            SizedBox(height: SizeConfig.defaultSize),
-            _buildAddButton(context),
-          ],
+      child: AnimatedPadding(
+        padding: MediaQuery.of(context).viewInsets,
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.decelerate,
+        child: Container(
+          padding: EdgeInsets.all(15),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(),
+              SizedBox(height: SizeConfig.defaultSize * 2),
+              _buildCommentSection(),
+              SizedBox(height: SizeConfig.defaultSize * 2),
+              _buildRatingSection(),
+              SizedBox(height: SizeConfig.defaultSize),
+              _buildAddButton(context),
+            ],
+          ),
         ),
       ),
     );

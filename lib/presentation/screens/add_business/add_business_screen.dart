@@ -41,6 +41,12 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   );
 
   @override
+  void initState() {
+    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
+    super.initState();
+  }
+
+  @override
   void dispose() {
     nameBusinessController.dispose();
     descriptionBusinessController.dispose();
@@ -58,7 +64,6 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
 
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     return BlocBuilder<BusinessBloc, BusinessState>(
         builder: (context, state){
           if(state is BusinessLoaded){

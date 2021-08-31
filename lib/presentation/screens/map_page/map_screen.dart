@@ -58,6 +58,7 @@ class MapSampleState extends State<MapSample> {
   @override
   void initState() {
     super.initState();
+    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     rootBundle.loadString('assets/maps/map_style.json').then((string) {
       _mapStyle = string;
     });
@@ -124,7 +125,6 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext context)  {
-    BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     //createMarker(context);
     return BlocBuilder<BusinessBloc, BusinessState>(
         builder: (context, state) {
