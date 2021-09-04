@@ -64,6 +64,26 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   }
 
   @override
+  void initState() {
+    nameProductController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    descriptionProductController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    originalPriceController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    percentOffController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    quantityController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    super.initState();
+  }
+
+  @override
   void dispose() {
     nameProductController.dispose();
     descriptionProductController.dispose();
@@ -83,7 +103,9 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
           originalPriceController.text.isNotEmpty &&
           percentOffController.text.isNotEmpty &&
           quantityController.text.isNotEmpty &&
-          selectedCategory!.id.isNotEmpty;
+          selectedCategory!.id.isNotEmpty &&
+          selectedBusiness!.id.isNotEmpty &&
+          imageCurrent != null;
 
 
   @override
@@ -324,7 +346,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   void onUploadPictures(BuildContext context, int index) async {
     ImagePicker picker = ImagePicker();
     File? imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 25);
     if (file != null) {
       imageFile = File(file.path);
       imagesLocal.add(imageFile);

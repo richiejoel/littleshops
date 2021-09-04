@@ -44,6 +44,12 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   void initState() {
     BlocProvider.of<BusinessBloc>(context).add(LoadBusiness());
     super.initState();
+    nameBusinessController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
+    descriptionBusinessController.addListener(() {
+      setState(() {}); // setState every time text changes
+    });
   }
 
   @override
@@ -59,7 +65,8 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
 
   bool get isPopulated =>
           nameBusinessController.text.isNotEmpty &&
-          descriptionBusinessController.text.isNotEmpty;
+          descriptionBusinessController.text.isNotEmpty &&
+          imageCurrent != null;
 
 
   @override
@@ -149,7 +156,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   void onUploadPictures(BuildContext context) async {
     ImagePicker picker = ImagePicker();
     File? imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 5, maxHeight: 500, maxWidth: 500);
     if (file != null) {
       imageFile = File(file.path);
       setState(() {
