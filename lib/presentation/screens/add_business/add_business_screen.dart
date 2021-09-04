@@ -16,6 +16,8 @@ import 'package:littleshops/presentation/widgets/buttons/circle_icon_button.dart
 import 'package:littleshops/presentation/widgets/others/loading.dart';
 import 'package:littleshops/utils/dialog.dart';
 import 'package:littleshops/utils/translate.dart';
+import 'package:square_in_app_payments/in_app_payments.dart';
+import 'package:square_in_app_payments/models.dart';
 
 class AddBusinessScreen extends StatefulWidget{
   @override
@@ -201,7 +203,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   _buildButtonAddBusiness(BuildContext context) {
     return CircleButton(
       child: Icon(Icons.check, color: Colors.white),
-      onPressed: () => onAddBusiness(context),
+      onPressed: () => _initSquarePayment(context),
       backgroundColor: isAddBusinessButtonEnabled()
           ? COLOR_CONST.primaryColor
           : COLOR_CONST.cardShadowColor,
@@ -220,6 +222,23 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
       UtilDialog.hideWaiting(context);
       UtilDialog.showInformation(context, content: Translate.of(context).translate('business_added'));
     }
+  }
+
+  Future<void> _initSquarePayment(BuildContext context) async {
+    await InAppPayments.setSquareApplicationId(
+      'sandbox-sq0idb-otEYIcGuXP406Ql-_yHO7A',
+    );
+    await InAppPayments.startCardEntryFlow(
+      onCardEntryCancel: () {},
+      onCardNonceRequestSuccess: (CardDetails result) async {
+        await InAppPayments.completeCardEntry(
+          onCardEntryComplete: () {
+            onAddBusiness(context);
+          },
+        );
+      },
+      collectPostalCode: false,
+    );
   }
 
 }
