@@ -80,7 +80,8 @@ class _AddCourierScreenState extends State<AddCourierScreen>{
       emailController.text.isNotEmpty &&
           passwordController.text.isNotEmpty &&
           confirmPasswordController.text.isNotEmpty &&
-          nameController.text.isNotEmpty;
+          nameController.text.isNotEmpty &&
+          selectedBusiness != null;
 
   bool isRegisterButtonEnabled() {
     return signUpBloc.state.isFormValid &&

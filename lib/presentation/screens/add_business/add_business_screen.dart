@@ -158,7 +158,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   void onUploadPictures(BuildContext context) async {
     ImagePicker picker = ImagePicker();
     File? imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 5, maxHeight: 500, maxWidth: 500);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 2, maxHeight: 500, maxWidth: 500);
     if (file != null) {
       imageFile = File(file.path);
       setState(() {
@@ -203,7 +203,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   _buildButtonAddBusiness(BuildContext context) {
     return CircleButton(
       child: Icon(Icons.check, color: Colors.white),
-      onPressed: () => _initSquarePayment(context),
+      onPressed: () => isAddBusinessButtonEnabled() ? _initSquarePayment(context) : null,
       backgroundColor: isAddBusinessButtonEnabled()
           ? COLOR_CONST.primaryColor
           : COLOR_CONST.cardShadowColor,

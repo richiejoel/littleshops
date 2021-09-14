@@ -65,6 +65,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
 
   @override
   void initState() {
+    super.initState();
     nameProductController.addListener(() {
       setState(() {}); // setState every time text changes
     });
@@ -80,7 +81,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
     quantityController.addListener(() {
       setState(() {}); // setState every time text changes
     });
-    super.initState();
+
   }
 
   @override
@@ -103,8 +104,8 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
           originalPriceController.text.isNotEmpty &&
           percentOffController.text.isNotEmpty &&
           quantityController.text.isNotEmpty &&
-          selectedCategory!.id.isNotEmpty &&
-          selectedBusiness!.id.isNotEmpty &&
+          selectedCategory != null &&
+          selectedBusiness != null  &&
           imageCurrent != null;
 
 
@@ -302,7 +303,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   _buildButtonAddProduct(BuildContext context) {
     return CircleButton(
       child: Icon(Icons.check, color: Colors.white),
-      onPressed: () => onAddProduct(context),
+      onPressed: () => isAddProductButtonEnabled() ? onAddProduct(context) : null,
       backgroundColor: isAddProductButtonEnabled()
           ? COLOR_CONST.primaryColor
           : COLOR_CONST.cardShadowColor,
