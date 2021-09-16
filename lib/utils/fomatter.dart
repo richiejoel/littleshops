@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 class UtilFormatter {
   static String formatNumber(double number) {
     //number = double.parse(number.toStringAsFixed(2));
-    final tool = new NumberFormat("###.0#", "en_US");
-    return tool.format(number).replaceAll(",", ".");
+    final tool = new NumberFormat("#,##0.00", "en_US");
+    return tool.format(number);
   }
 
   static String formatTimeStamp(Timestamp timestamp) {
