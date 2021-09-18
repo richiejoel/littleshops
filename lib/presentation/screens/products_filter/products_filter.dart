@@ -9,12 +9,9 @@ import 'package:littleshops/presentation/screens/home_page/bloc/home_event.dart'
 import 'package:littleshops/presentation/screens/home_page/bloc/home_state.dart';
 import 'package:littleshops/presentation/widgets/buttons/cart_button.dart';
 import 'package:littleshops/presentation/widgets/others/loading.dart';
-import 'package:littleshops/presentation/widgets/others/section_widget.dart';
 import 'package:littleshops/presentation/widgets/others/section_widget_grid.dart';
 import 'package:littleshops/presentation/widgets/single_card/product_card.dart';
-import 'package:littleshops/utils/translate.dart';
 
-import '../../../navigation_drawer.dart';
 
 class ProductFilterScreen extends StatefulWidget{
 
@@ -29,6 +26,11 @@ class _ProductFilterScreenState extends State<ProductFilterScreen>{
 
   final BusinessModel business;
   _ProductFilterScreenState({required this.business});
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

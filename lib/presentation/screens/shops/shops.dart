@@ -23,6 +23,11 @@ class _ShopsScreenState extends State<ShopsScreen>{
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
    return Scaffold(
      body: _builderBody(context),

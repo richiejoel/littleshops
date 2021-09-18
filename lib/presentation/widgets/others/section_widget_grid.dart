@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:littleshops/configs/size_config.dart';
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
-import 'package:littleshops/utils/translate.dart';
 
 class SectionWidgetGrid extends StatelessWidget {
   final String title;
@@ -25,6 +24,7 @@ class SectionWidgetGrid extends StatelessWidget {
       color: COLOR_CONST.backgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           /// Section title
           SectionTitle(
@@ -36,14 +36,27 @@ class SectionWidgetGrid extends StatelessWidget {
           /// Section content
           SingleChildScrollView(
             child:
-               GridView.count(
+              GridView.builder(
+                  physics: ScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: MediaQuery.of(context).size.width /
+                          (MediaQuery.of(context).size.height * 0.7),
+                      ),
+                  itemCount: children.length,
+                  itemBuilder: (BuildContext ctx, index){
+                    return children[index];
+                  }
+              ),
+               /*GridView.count(
                  physics: ScrollPhysics(),
                 childAspectRatio: MediaQuery.of(context).size.width /
                     (MediaQuery.of(context).size.height * 0.7),
                 shrinkWrap: true,
                 crossAxisCount: 2,
                 children: children,
-              ),
+              ),*/
           ),
 
           /*Container(

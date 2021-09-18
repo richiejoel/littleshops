@@ -3,12 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:littleshops/constants/util_constants.dart';
-import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/order_model.dart';
-import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/data/repository/auth/auth_repository.dart';
-import 'package:littleshops/data/repository/business_repository/business_repository.dart';
 import 'package:littleshops/data/repository/order_repository/order_repository.dart';
 
 import 'package:littleshops/presentation/common_blocs/cart/bloc.dart';
@@ -26,7 +22,6 @@ import 'package:littleshops/presentation/screens/detail_order/detail_order_scree
 import 'package:littleshops/utils/translate.dart';
 
 import 'data/repository/user_repository/user_repository.dart';
-import 'listener/notifications_messaging.dart';
 
 
 class AppView extends StatefulWidget {

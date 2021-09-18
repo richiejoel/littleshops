@@ -22,7 +22,6 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
   StorageRepository _storageRepository = StorageRepository();
   UserRepository _userRepository = UserRepository();
   BusinessRepository _businessRepository = BusinessRepository();
-  UserModel? _loggedUser;
   Product? productCurrent = Product(
       id: "", images: [],
       rating: 3, isAvailable: true,
@@ -101,6 +100,11 @@ class AddProductBloc extends Bloc<AddProductEvent, AddProductState>{
     } catch (e) {
 
     }
+  }
+
+  @override
+  Future<void> close() {
+    return super.close();
   }
   
 

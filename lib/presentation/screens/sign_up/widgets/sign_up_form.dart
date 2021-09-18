@@ -15,7 +15,6 @@ import 'package:littleshops/presentation/screens/sign_up/bloc/sign_up_state.dart
 import 'package:littleshops/presentation/widgets/buttons/circle_button.dart';
 import 'package:littleshops/utils/dialog.dart';
 import 'package:littleshops/utils/translate.dart';
-import 'package:littleshops/utils/validators.dart';
 
 
 class SignUpForm extends StatefulWidget {

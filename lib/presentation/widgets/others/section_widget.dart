@@ -22,37 +22,49 @@ class SectionWidget extends StatelessWidget {
       margin: EdgeInsets.only(top: SizeConfig.defaultSize * 1.5),
       padding: EdgeInsets.symmetric(vertical: SizeConfig.defaultPadding),
       color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          /// Section title
-          SectionTitle(
-            title: title,
-            handleOnSeeAll: handleOnSeeAll,
-          ),
-          SizedBox(height: SizeConfig.defaultSize),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            /// Section title
+            SectionTitle(
+              title: title,
+              handleOnSeeAll: handleOnSeeAll,
+            ),
+            SizedBox(height: SizeConfig.defaultSize),
 
-          /// Section content
-          Container(
-            child: children.length == 0
-                ? CircularProgressIndicator()
-                : SingleChildScrollView(
+            /// Section content
+            Container(
+              child: children.length == 0
+                  ? CircularProgressIndicator()
+                  : SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: SizeConfig.defaultSize,
                 ),
-                child: Row(
+                child: Container( /*Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: children,
+                ),*/
+                  height: SizeConfig.defaultSize * 32,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: children.length,
+                  itemBuilder: (BuildContext ctx, index){
+                    return children[index];
+                  }),
                 ),
-              ),
             ),
-          ),
-        ],
-      ),
+            ),
+            ),
+          ],
+        ),
+      )
     );
   }
 }

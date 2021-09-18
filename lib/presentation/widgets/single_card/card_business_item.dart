@@ -19,7 +19,6 @@ class CartItemBusinessCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var businessId = businessItem.id;
 
     return CustomCardWidget(
       onTap: () => Navigator.pushNamed(

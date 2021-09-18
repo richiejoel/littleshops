@@ -16,7 +16,6 @@ import 'package:littleshops/presentation/screens/feedbacks/feebacks_screen.dart'
 import 'package:littleshops/presentation/screens/my_orders/my_orders_screen.dart';
 import 'package:littleshops/presentation/screens/products_filter/products_filter.dart';
 import 'package:littleshops/presentation/screens/profile/profile_screen.dart';
-import 'package:littleshops/presentation/screens/shops/shops.dart';
 import 'package:littleshops/presentation/screens/sign_up/sign_up_screen.dart';
 
 import 'package:littleshops/presentation/screens/splash_screen/splash_screen.dart';

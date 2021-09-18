@@ -1,12 +1,10 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:littleshops/data/model/location_model.dart';
-import 'package:littleshops/data/repository/location_repository/location_repository.dart';
 
 import 'address_picker_event.dart';
 import 'address_picker_state.dart';
 
 class AddressPickerBloc extends Bloc<AddressPickerEvent, AddressPickerState> {
-  LocationRepository _locationRepository = LocationRepository();
 
   AddressPickerBloc() : super(AddressPickerState());
 
@@ -162,4 +160,10 @@ class AddressPickerBloc extends Bloc<AddressPickerEvent, AddressPickerState> {
       print(e.toString());
     }
   }
+
+  @override
+  Future<void> close() {
+    return super.close();
+  }
+
 }

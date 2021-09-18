@@ -1,4 +1,3 @@
-import 'package:littleshops/data/model/business_model.dart';
 import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/data/repository/auth/i_auth_repository.dart';
 import 'package:littleshops/data/repository/business_repository/business_repository.dart';

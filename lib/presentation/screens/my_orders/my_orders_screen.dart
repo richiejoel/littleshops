@@ -42,6 +42,11 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: NavigationDrawer(),

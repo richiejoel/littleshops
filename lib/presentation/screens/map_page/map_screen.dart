@@ -17,26 +17,14 @@ import 'package:littleshops/presentation/common_blocs/business/business_state.da
 import 'package:littleshops/presentation/widgets/others/loading.dart';
 import 'package:image/image.dart' as Images;
 
-void main() => runApp(MapScreen());
 
-class MapScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Google Maps Demo',
-      debugShowCheckedModeBanner: false,
-      home: MapSample(),
-    );
-  }
-}
-
-class MapSample extends StatefulWidget {
+class MapScreen extends StatefulWidget {
 
   @override
-  State<MapSample> createState() => MapSampleState();
+  MapSampleState createState() => MapSampleState();
 }
 
-class MapSampleState extends State<MapSample> {
+class MapSampleState extends State<MapScreen> {
   Completer<GoogleMapController> _controller = Completer();
   GoogleMapController? mapController;
   String? _mapStyle;
@@ -67,6 +55,11 @@ class MapSampleState extends State<MapSample> {
     WidgetsBinding.instance!.addPostFrameCallback(
             (timeStamp) {getCustomMarkerIcon(iconKey);
             });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   createMarker(context) {

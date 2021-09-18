@@ -3,7 +3,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:littleshops/configs/application.dart';
 import 'package:littleshops/constants/util_constants.dart';
 import 'package:littleshops/data/model/business_model.dart';
-import 'package:littleshops/data/model/user_model.dart';
 import 'package:littleshops/data/repository/auth/auth_repository.dart';
 import 'package:littleshops/data/repository/business_repository/business_repository.dart';
 import 'package:littleshops/data/repository/storage_repository/storage_repository.dart';

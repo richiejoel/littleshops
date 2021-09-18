@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:littleshops/configs/router.dart';
 import 'package:littleshops/configs/size_config.dart';
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
@@ -191,24 +190,6 @@ class _DeliveryAddressModelBottomSheetState
             ),
             maxLines: null,
           ),
-        ],
-      ),
-    );
-  }
-
-  _buildGoogleMapOption() {
-    return CustomCardWidget(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            Translate.of(context).translate("use_google_map"),
-            style: FONT_CONST.BOLD_DEFAULT_18,
-          ),
-          IconButton(
-            icon: Icon(Icons.forward),
-            onPressed: () => Navigator.pushNamed(context, AppRouter.FAVOURITE),//MAP
-          )
         ],
       ),
     );
