@@ -1,4 +1,4 @@
-# littleshops
+# Little Shops
 
 A new Flutter project.
 
