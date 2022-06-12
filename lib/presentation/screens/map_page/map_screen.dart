@@ -52,9 +52,9 @@ class MapSampleState extends State<MapScreen> {
     });
     markers = Set.from([]);
     //WidgetsBinding.instance!.addPostFrameCallback(getCustomMarkerIcon(iconKey));
-    WidgetsBinding.instance!.addPostFrameCallback(
+    /*WidgetsBinding.instance!.addPostFrameCallback(
             (timeStamp) {getCustomMarkerIcon(iconKey);
-            });
+            });*/
   }
 
   @override
@@ -106,7 +106,8 @@ class MapSampleState extends State<MapScreen> {
           position: LatLng(busy.latitude, busy.longitude),
           infoWindow: InfoWindow(title: busy.name),
           //icon: await getMarkerImageFromUrl(busy.imageUrl, targetWidth: 100),
-          icon: await getMarkerIcon(busy.imageUrl, Size(130.0, 130.0)),
+          //icon: await getMarkerIcon(busy.imageUrl, Size(130.0, 130.0)),
+          icon: BitmapDescriptor.defaultMarkerWithHue(COLOR_CONST.primaryColorHue)
       );
       markersList.add(marker!);
        setState(() {

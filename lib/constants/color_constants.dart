@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class COLOR_CONST {
   static const primaryColor = Color(0xfff92651);
+  static const double primaryColorHue = 348;
   static const primaryHoverColor = Color(0xa1ee5e7f);
   static const textColor = Color(0xFF4a4a4a);
   static const cardShadowColor = Color(0xFFd3d1d1);
