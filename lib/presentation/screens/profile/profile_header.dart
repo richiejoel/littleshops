@@ -22,7 +22,7 @@ class ProfileHeader extends StatelessWidget {
   void onUploadAvatar(BuildContext context) async {
     ImagePicker picker = ImagePicker();
     File imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 25);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 1);
     if (file != null) {
       imageFile = File(file.path);
       BlocProvider.of<ProfileBloc>(context).add(UploadAvatar(imageFile));

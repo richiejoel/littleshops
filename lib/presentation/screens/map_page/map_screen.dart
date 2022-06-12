@@ -128,8 +128,8 @@ class MapSampleState extends State<MapScreen> {
               home: Scaffold(
                 body: GoogleMap(
                   initialCameraPosition: _kGooglePlex,
-                  myLocationEnabled: true,
-                  myLocationButtonEnabled: true,
+                  myLocationEnabled: false,
+                  myLocationButtonEnabled: false,
                   onMapCreated: (GoogleMapController controller) {
                     controller.setMapStyle(_mapStyle!);
                     _controller.complete(controller);

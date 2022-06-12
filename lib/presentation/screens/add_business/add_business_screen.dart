@@ -158,7 +158,7 @@ class _AddBusinessScreenState extends State<AddBusinessScreen> {
   void onUploadPictures(BuildContext context) async {
     ImagePicker picker = ImagePicker();
     File? imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 2, maxHeight: 500, maxWidth: 500);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 1, maxHeight: 500, maxWidth: 500);
     if (file != null) {
       imageFile = File(file.path);
       setState(() {
