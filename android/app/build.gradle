@@ -25,6 +25,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'  // Google Services plugin
+apply plugin: 'com.huawei.agconnect' // Huawei Services
 
 android {
     compileSdkVersion 30
@@ -43,7 +44,19 @@ android {
         multiDexEnabled true // ADD THIS LINE
     }
 
+    signingConfigs {
+        release {
+            storeFile file('./keystore/upload-keystore.jks')
+            storePassword 'shopshuawei'
+            keyAlias 'upload'
+            keyPassword 'shopshuawei'
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.release
+        }
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
@@ -65,4 +78,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-messaging'
     implementation 'com.google.firebase:firebase-messaging-ktx'
     implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    //huawei
+    implementation 'com.huawei.hms:hianalytics:6.3.0.302'
 }

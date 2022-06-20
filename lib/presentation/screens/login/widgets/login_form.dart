@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/configs/HuaweiManager.dart';
 
 import 'package:littleshops/presentation/screens/login/bloc/bloc.dart';
 import 'package:littleshops/presentation/common_blocs/authentication/bloc.dart';
@@ -21,6 +23,8 @@ class _LoginFormState extends State<LoginForm> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool isShowPassword = false;
+
+
 
   @override
   void initState() {
@@ -47,11 +51,19 @@ class _LoginFormState extends State<LoginForm> {
 
   void onLogin() {
     if (isLoginButtonEnabled()) {
+      analyticsLogin();
       loginBloc.add(LoginWithCredential(
         email: emailController.text,
         password: passwordController.text,
       ));
     }
+  }
+
+  void analyticsLogin() async {
+    Map<String, dynamic> customEvent = {
+      "email": emailController.text
+    };
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.onEvent("Login", customEvent);
   }
 
   @override

@@ -19,6 +19,9 @@ dependencies:
   firebase_auth: ^1.0.0
   firebase_analytics: ^5.0.2
   firebase_messaging: ^10.0.4
+  #huawei
+  huawei_push: ^6.3.0+304
+  huawei_analytics: ^6.2.0+302
   #bloc
   flutter_bloc: ^7.0.0
   #provider
@@ -40,7 +43,10 @@ dependencies:
   #Maps
   google_maps_flutter: ^2.0.6
   geolocator: ^7.4.0
+  location: ^4.2.0
+  permission_handler: ^8.1.6
   flutter_cache_manager: ^3.1.2
+  android_intent_plus: ^3.1.1
   #Others
   flutter_local_notifications: ^8.1.1+1
   stack_trace: ^1.10.0

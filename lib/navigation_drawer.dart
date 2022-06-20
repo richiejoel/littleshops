@@ -12,6 +12,8 @@ import 'package:littleshops/presentation/common_blocs/profile/profile_bloc.dart'
 import 'package:littleshops/presentation/common_blocs/profile/profile_state.dart';
 import 'package:littleshops/utils/translate.dart';
 
+import 'configs/HuaweiManager.dart';
+
 class NavigationDrawer extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
   @override
@@ -101,11 +103,20 @@ class NavigationDrawer extends StatelessWidget {
     );
   }
 
+  void analyticsHome(String email, String username) async {
+    Map<String, dynamic> customEvent = {
+      "email": email,
+      "username": username
+    };
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.onEvent("HomeApp", customEvent);
+  }
+
   Widget mDrawerHeader(){
     return Container(
       child: BlocBuilder<ProfileBloc, ProfileState>(
         builder: (context, state) {
           if (state is ProfileLoaded) {
+            analyticsHome(state.loggedUser.email, state.loggedUser.name);
             return UserAccountsDrawerHeader(
               accountName: Text(state.loggedUser.name, style: FONT_CONST.TITLE_DRAWER,),
               accountEmail: Text(state.loggedUser.email, style: FONT_CONST.SUBTITLE_DRAWER,),
@@ -123,6 +134,7 @@ class NavigationDrawer extends StatelessWidget {
                 color: COLOR_CONST.primaryColor,
               ),
             );
+
           }
           return Center(child: Text("Something went wrongs."));
         },

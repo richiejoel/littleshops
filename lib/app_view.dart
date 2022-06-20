@@ -1,11 +1,18 @@
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:littleshops/data/model/order_model.dart';
 import 'package:littleshops/data/repository/auth/auth_repository.dart';
 import 'package:littleshops/data/repository/order_repository/order_repository.dart';
+import 'package:huawei_push/huawei_push.dart' as Huawei;
+import 'package:huawei_analytics/huawei_analytics.dart' as AnalyticsHuawei;
+import 'package:location/location.dart' as loc;
 
 import 'package:littleshops/presentation/common_blocs/cart/bloc.dart';
 import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
@@ -21,6 +28,7 @@ import 'package:littleshops/presentation/common_blocs/profile/profile_event.dart
 import 'package:littleshops/presentation/screens/detail_order/detail_order_screen.dart';
 import 'package:littleshops/utils/translate.dart';
 
+import 'configs/HuaweiManager.dart';
 import 'data/repository/user_repository/user_repository.dart';
 
 
@@ -34,6 +42,8 @@ class _AppViewState extends State<AppView> {
 
   final _navigatorKey = GlobalKey<NavigatorState>();
   NavigatorState? get _navigator => _navigatorKey.currentState;
+
+  String _token = '';
 
   //ini rjgman
   //BusinessRepository _businessRepository = BusinessRepository();
@@ -56,6 +66,9 @@ class _AppViewState extends State<AppView> {
     importance: Importance.high,
   );
 
+  //huawei Analytics
+  //final AnalyticsHuawei.HMSAnalytics hmsAnalytics = new AnalyticsHuawei.HMSAnalytics();
+
   void mPrueba() async {
     await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
@@ -74,11 +87,11 @@ class _AppViewState extends State<AppView> {
   }
 
   @override
-  void initState()  {
-    CommonBloc.applicationBloc.add(SetupApplication());
+  void initState()   {
     super.initState();
-    mPP();
 
+    CommonBloc.applicationBloc.add(SetupApplication());
+    mPP();
     mPrueba();
     var initializationSettingsAndroid =
     AndroidInitializationSettings('app_icon');
@@ -97,6 +110,29 @@ class _AppViewState extends State<AppView> {
     messaging.subscribeToTopic("Events");
     mConfigureCallBacks();
     //fin rjgman
+    initAnalyticsHuawei();
+    Huawei.Push.enableLogger();
+    Huawei.Push.disableLogger();
+    initPlatformState();
+
+  }
+
+  Future initLocation() async {
+    loc.Location locationR = loc.Location();
+    if (!await locationR.serviceEnabled()) {
+       locationR.requestService();
+    }
+
+  }
+
+  Future<void> initAnalyticsHuawei() async {
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.enableLog();
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.enableLogger();
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.setAnalyticsEnabled(true);
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.enableLogWithLevel("DEBUG");
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.setUserId(_authRepository.loggedFirebaseUser.uid);
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.setUserProfile("Email", _authRepository.loggedFirebaseUser.email!!);
+
   }
 
   // ini rjgman
@@ -115,6 +151,132 @@ class _AppViewState extends State<AppView> {
     }
     return false;
   }*/
+
+  Future<void> initPlatformState() async {
+    if (!mounted) return;
+    Huawei.Push.getTokenStream.listen(_onTokenEvent, onError: _onTokenError);
+    Huawei.Push.getIntentStream.listen(_onNewIntent, onError: _onIntentError);
+    Huawei.Push.onNotificationOpenedApp.listen(_onNotificationOpenedApp);
+    String result = await Huawei.Push.subscribe("shops");
+    dynamic initialNotification = await Huawei.Push.getInitialNotification();
+    _onNotificationOpenedApp(initialNotification);
+    String? intent = await Huawei.Push.getInitialIntent();
+    _onNewIntent(intent);
+    Huawei.Push.onMessageReceivedStream.listen(
+      _onMessageReceived,
+      onError: _onMessageReceiveError,
+    );
+    Huawei.Push.getRemoteMsgSendStatusStream.listen(
+      _onRemoteMessageSendStatus,
+      onError: _onRemoteMessageSendError,
+    );
+    bool backgroundMessageHandler = await Huawei.Push.registerBackgroundMessageHandler(
+      backgroundMessageCallback!!,
+    );
+    debugPrint(
+      'backgroundMessageHandler registered: $backgroundMessageHandler',
+    );
+  }
+
+
+  void _onTokenEvent(String event) {
+    _token = event;
+    print('Hola -> ' + _token);
+    showResult('TokenEvent', _token);
+  }
+
+  void _onTokenError(Object error) {
+    PlatformException e = error as PlatformException;
+    showResult('TokenErrorEvent', e.message!);
+  }
+
+  void _onMessageReceived(Huawei.RemoteMessage remoteMessage) {
+    String? data = remoteMessage.data;
+    if (data != null) {
+      Huawei.Push.localNotification(
+        <String, String>{
+          Huawei.HMSLocalNotificationAttr.TITLE: 'DataMessage Received',
+          Huawei.HMSLocalNotificationAttr.MESSAGE: data,
+        },
+      );
+      showResult('onMessageReceived', 'Data: ' + data);
+    } else {
+      showResult('onMessageReceived', 'No data is present.');
+    }
+  }
+
+  void _onMessageReceiveError(Object error) {
+    showResult('onMessageReceiveError', error.toString());
+  }
+
+  void _onRemoteMessageSendStatus(String event) {
+    showResult('RemoteMessageSendStatus', 'Status: ' + event.toString());
+  }
+
+  void _onRemoteMessageSendError(Object error) {
+    PlatformException e = error as PlatformException;
+    showResult('RemoteMessageSendError', 'Error: ' + e.toString());
+  }
+
+  void _onNewIntent(String? intentString) {
+    // For navigating to the custom intent page (deep link) the custom
+    // intent that sent from the push kit console is:
+    // app://app2
+    intentString = intentString ?? '';
+    if (intentString != '') {
+      //showResult('CustomIntentEvent: ', intentString);
+      List<String> parsedString = intentString.split('://');
+      if (parsedString[1] == 'app2') {
+        SchedulerBinding.instance?.addPostFrameCallback(
+              (Duration timeStamp) {
+            Navigator.of(context).push(MaterialPageRoute<dynamic>(
+              builder: (BuildContext context) => const CustomIntentPage(),
+            ));
+          },
+        );
+      }
+    }
+  }
+
+  void _onIntentError(Object err) {
+    PlatformException e = err as PlatformException;
+    debugPrint('Error on intent stream: ' + e.toString());
+  }
+
+  void _onNotificationOpenedApp(dynamic initialNotification) {
+    if (initialNotification != null) {
+      showResult('onNotificationOpenedApp', initialNotification.toString());
+    }
+  }
+
+  void backgroundMessageCallback(Huawei.RemoteMessage remoteMessage) async {
+    String? data = remoteMessage.data;
+    if (data != null) {
+      debugPrint(
+        'Background message is received, sending local notification.',
+      );
+      Huawei.Push.localNotification(
+        <String, String>{
+          Huawei.HMSLocalNotificationAttr.TITLE: '[Headless] DataMessage Received',
+          Huawei.HMSLocalNotificationAttr.MESSAGE: data,
+        },
+      );
+    } else {
+      debugPrint(
+        'Background message is received. There is no data in the message.',
+      );
+    }
+  }
+
+  void showResult(
+      String name, [
+        String? msg = 'Button pressed.',
+      ]) {
+    msg ??= '';
+    debugPrint('[' + name + ']' + ': ' + msg);
+    Huawei.Push.showToast('[' + name + ']: ' + msg);
+  }
+
 
   Future<dynamic> onSelectNotification(payload) async {
     // implement the navigation logic
@@ -264,6 +426,7 @@ class _AppViewState extends State<AppView> {
               ],
               locale: AppLanguage.defaultLanguage,
               builder: (context, child) {
+                 initLocation();
                 return BlocListener<AuthenticationBloc, AuthenticationState>(
                   listener: (context, authState) {
                     if (applicationState is ApplicationCompleted) {
@@ -290,4 +453,38 @@ class _AppViewState extends State<AppView> {
     );
   }
 
+}
+
+class CustomIntentPage extends StatelessWidget {
+  const CustomIntentPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Push Kit Demo - Custom Intent URI Page',
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.network(
+              'https://developer.huawei.com/dev_index/img/bbs_en_logo.png?v=123',
+            ),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                'Page to be opened with Custom Intent URI',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 25),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
