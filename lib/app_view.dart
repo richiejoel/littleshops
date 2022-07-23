@@ -426,7 +426,7 @@ class _AppViewState extends State<AppView> {
               ],
               locale: AppLanguage.defaultLanguage,
               builder: (context, child) {
-                 initLocation();
+                 //initLocation();
                 return BlocListener<AuthenticationBloc, AuthenticationState>(
                   listener: (context, authState) {
                     if (applicationState is ApplicationCompleted) {
