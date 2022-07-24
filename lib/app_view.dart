@@ -13,6 +13,8 @@ import 'package:littleshops/data/repository/order_repository/order_repository.da
 import 'package:huawei_push/huawei_push.dart' as Huawei;
 import 'package:huawei_analytics/huawei_analytics.dart' as AnalyticsHuawei;
 import 'package:location/location.dart' as loc;
+import 'package:agconnect_crash/agconnect_crash.dart';
+
 
 import 'package:littleshops/presentation/common_blocs/cart/bloc.dart';
 import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
@@ -29,6 +31,7 @@ import 'package:littleshops/presentation/screens/detail_order/detail_order_scree
 import 'package:littleshops/utils/translate.dart';
 
 import 'configs/HuaweiManager.dart';
+import 'data/model/user_manager.dart';
 import 'data/repository/user_repository/user_repository.dart';
 
 
@@ -110,11 +113,21 @@ class _AppViewState extends State<AppView> {
     messaging.subscribeToTopic("Events");
     mConfigureCallBacks();
     //fin rjgman
+    AGCCrash.instance.enableCrashCollection(true);
+    //_mTestCrash();
     initAnalyticsHuawei();
     Huawei.Push.enableLogger();
     Huawei.Push.disableLogger();
     initPlatformState();
 
+  }
+
+  _mTestCrash() async {
+    try {
+      throw Exception('test exception');
+    } catch (e, stack) {
+      AGCCrash.instance.recordError(e, stack);
+    }
   }
 
   Future initLocation() async {
@@ -439,6 +452,8 @@ class _AppViewState extends State<AppView> {
                         loadData();
                         onNavigate(AppRouter.HOME);
                         initPushNotification();
+                        var user= UserManager();
+                        user.email = authState.loggedFirebaseUser.email;
                       }
                     } else {
                       onNavigate(AppRouter.SPLASH);

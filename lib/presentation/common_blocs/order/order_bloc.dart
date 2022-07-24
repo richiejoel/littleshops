@@ -1,3 +1,4 @@
+import 'package:agconnect_crash/agconnect_crash.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:littleshops/data/model/order_model.dart';
 import 'package:littleshops/data/model/push_notification_model.dart';
@@ -51,7 +52,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
         deliveringOrders: deliveringOrders,
         deliveredOrders: deliveredOrders,
       );
-    } catch (e) {
+    } catch (e, stack) {
+      AGCCrash.instance.recordError(e, stack);
       yield MyOrdersLoadFailure(e.toString());
     }
   }
@@ -98,7 +100,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
 
 
 
-    } catch (e) {
+    } catch (e, stack) {
+      AGCCrash.instance.recordError(e, stack);
       print(e.toString());
     }
   }
@@ -108,7 +111,8 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     try {
       await _orderRepository.removeOrderModel(event.order);
       add(LoadMyOrders());
-    } catch (e) {
+    } catch (e, stack) {
+      AGCCrash.instance.recordError(e, stack);
       print(e.toString());
     }
   }

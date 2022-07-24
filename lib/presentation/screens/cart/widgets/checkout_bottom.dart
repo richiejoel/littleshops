@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:littleshops/configs/HuaweiManager.dart';
 import 'package:littleshops/configs/size_config.dart';
 import 'package:littleshops/constants/color_constants.dart';
 import 'package:littleshops/constants/font_constant.dart';
 import 'package:littleshops/constants/icon_constant.dart';
+import 'package:littleshops/data/model/user_manager.dart';
 import 'package:littleshops/presentation/common_blocs/cart/cart_bloc.dart';
 import 'package:littleshops/presentation/common_blocs/cart/cart_state.dart';
 import 'package:littleshops/presentation/screens/cart/widgets/payment_bottom_sheet.dart';
@@ -62,6 +64,8 @@ class CheckoutBottom extends StatelessWidget {
       onPressed: () {
         if (state.cart.length > 0) {
           _openPaymentBottomSheet(context);
+          var user = UserManager();
+          analyticsCart(user.email!!, state);
         } else {
           UtilDialog.showInformation(
             context,
@@ -104,6 +108,14 @@ class CheckoutBottom extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  void analyticsCart(String email, CartLoaded state) async {
+    Map<String, dynamic> customEvent = {
+      "email": email,
+      "numberProducts": state.cart.length
+    };
+    await HuaweiAnalyticsManager.instance.hmsAnalytics.onEvent("AddToCartShops", customEvent);
   }
 
   _openPaymentBottomSheet(BuildContext context) {
