@@ -7,6 +7,7 @@ import 'package:littleshops/presentation/widgets/buttons/cart_button.dart';
 import 'package:littleshops/utils/translate.dart';
 import 'package:littleshops/presentation/screens/home_page/home_screen.dart';
 import 'package:littleshops/presentation/screens/map_page/map_screen.dart';
+import 'package:littleshops/presentation/screens/map_page/prueba.dart';
 
 import 'navigation_drawer.dart';
 
@@ -69,7 +70,8 @@ class _BottomNavigationState extends State<BottomNavigation>
         children: [
           HomeScreen(),
           ShopsScreen(),
-          MapScreen(),
+          MapScreen()
+          //PushKitDemoApp()
         ],
         index: selectedIndex,
       ),

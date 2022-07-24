@@ -81,4 +81,5 @@ dependencies {
 
     //huawei
     implementation 'com.huawei.hms:hianalytics:6.3.0.302'
+    implementation 'com.huawei.hms:push:6.3.0.304'
 }

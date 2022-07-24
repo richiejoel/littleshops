@@ -153,7 +153,7 @@ class _AppViewState extends State<AppView> {
   }*/
 
   Future<void> initPlatformState() async {
-    if (!mounted) return;
+    //if (!mounted) return;
     Huawei.Push.getTokenStream.listen(_onTokenEvent, onError: _onTokenError);
     Huawei.Push.getIntentStream.listen(_onNewIntent, onError: _onIntentError);
     Huawei.Push.onNotificationOpenedApp.listen(_onNotificationOpenedApp);
@@ -181,7 +181,7 @@ class _AppViewState extends State<AppView> {
 
   void _onTokenEvent(String event) {
     _token = event;
-    print('Hola -> ' + _token);
+    print('taylor2 ' + _token);
     showResult('TokenEvent', _token);
   }
 
@@ -192,6 +192,7 @@ class _AppViewState extends State<AppView> {
 
   void _onMessageReceived(Huawei.RemoteMessage remoteMessage) {
     String? data = remoteMessage.data;
+    print('taylor' + data!!);
     if (data != null) {
       Huawei.Push.localNotification(
         <String, String>{
