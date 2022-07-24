@@ -66,6 +66,7 @@ class CheckoutBottom extends StatelessWidget {
           _openPaymentBottomSheet(context);
           var user = UserManager();
           analyticsCart(user.email!!, state);
+          print("shawn "+user.email!!);
         } else {
           UtilDialog.showInformation(
             context,

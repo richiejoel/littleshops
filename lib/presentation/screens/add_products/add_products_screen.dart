@@ -347,7 +347,7 @@ class _AddProductsScreenState extends State<AddProductsScreen>{
   void onUploadPictures(BuildContext context, int index) async {
     ImagePicker picker = ImagePicker();
     File? imageFile;
-    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 1);
+    final file = await picker.getImage(source: ImageSource.gallery, imageQuality: 25);
     if (file != null) {
       imageFile = File(file.path);
       imagesLocal.add(imageFile);
