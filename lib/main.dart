@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:littleshops/presentation/common_blocs/simple_bloc_observer.dart';
 import 'package:location/location.dart' as loc;
-
-import 'appPermissions.dart';
 import 'configs/size_config.dart';
 import 'package:littleshops/presentation/common_blocs/common_bloc.dart';
 import 'package:littleshops/app_view.dart';
@@ -18,14 +16,6 @@ void main() async {
   Bloc.observer = SimpleBlocObserver();
   await Firebase.initializeApp();
   runApp(MyApp());
-
-}
-
-Future initLocation() async {
-  loc.Location locationR = loc.Location();
-  if (!await locationR.serviceEnabled()) {
-    locationR.requestService().then((value) => null);
-  }
 
 }
 

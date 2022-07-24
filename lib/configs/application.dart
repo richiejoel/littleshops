@@ -21,13 +21,13 @@ class Application {
       // Location services are not enabled don't continue
       // accessing the position and request users of the
       // App to enable the location services.
-      initLocation();
+      //initLocation();
       //return Future.error('Location services are disabled.');
     }
 
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
+      //permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
         // Permissions are denied, next time you could try
         // requesting permissions again (this is also where
